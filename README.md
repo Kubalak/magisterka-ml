@@ -7,3 +7,4 @@ Post [https://neptune.ai/blog/how-to-train-your-own-object-detector-using-tensor
 
 - Efficient net [http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz)
 - Tensorflow model Zoo [https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)
+- Data archive [link](https://drive.google.com/file/d/1wq8ISWIAwkHDlyccxwRCZ0T3vawaUjj-/view?usp=sharing)
