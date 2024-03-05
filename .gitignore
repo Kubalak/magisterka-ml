@@ -173,6 +173,7 @@ cython_debug/
 /workspace/models/*/ckpt*
 /workspace/models/*/train/
 /workspace/models/*/eval/
+workspace/exported_models/
 
 # Tmp and local files 
 
@@ -180,3 +181,6 @@ cython_debug/
 *tmp.py
 *_local.*
 *tmp_local*
+
+# NVVM local dir
+nvvm/
