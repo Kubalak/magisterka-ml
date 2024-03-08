@@ -35,14 +35,14 @@ def train_model(modelname):
     while subproc.poll() is None:
         c = subproc.stderr.readline()
         sys.stdout.write(c.decode('utf-8',  errors='ignore'))
-        if c.decode('utf-8', errors='ignore').find("'Loss/classification_loss': nan") != -1:
-            print("Killing broken learning process")
-            logfile.write("Killing broken learning process...\n".encode('utf-8'))
-            subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
-            training_killed = True
         with open(f"logs/{modelname}_{time}-stderr.log", "ab") as logfile:
             logfile.write(c)
-
+            if c.decode('utf-8', errors='ignore').find("'Loss/classification_loss': nan") != -1:
+                print("Killing broken learning process")
+                logfile.write("Killing broken learning process...\n".encode('utf-8'))
+                subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
+                training_killed = True
+            
     errors.close()
     
     if not training_killed:

@@ -4,6 +4,7 @@ import pandas as pd
 import tensorflow as tf
 from datetime import datetime
 from object_detection.utils import label_map_util
+from alive_progress import alive_bar
 
 
 def ExtractBBoxes(bboxes, bclasses, bscores, threshold, im_width, im_height, category_index):
@@ -22,7 +23,7 @@ def ExtractBBoxes(bboxes, bclasses, bscores, threshold, im_width, im_height, cat
 
 # @Matheus Correia's code but modified
 
-def detection(image_path, width, height, model_fn, category_index):
+def detection(image_path, width, height, model_fn, threshold, category_index):
     # Pre-processing image.
     image = tf.image.decode_image(open(image_path, 'rb').read(), channels=3)
     image = tf.image.resize(image, (width,height))
@@ -34,13 +35,13 @@ def detection(image_path, width, height, model_fn, category_index):
     bboxes = detections['detection_boxes'][0].numpy()
     bclasses = detections['detection_classes'][0].numpy().astype(np.int32)
     bscores = detections['detection_scores'][0].numpy()
-    return ExtractBBoxes(bboxes, bclasses, bscores, im_width, im_height, category_index)
+    return ExtractBBoxes(bboxes, bclasses, bscores, threshold, im_width, im_height, category_index)
 
-def evaluate_detection(image_path, width, height, model_fn, category_index, actual_class):
+def evaluate_detection(image_path, width, height, model_fn, threshold, category_index, actual_class):
     # boxes = [[145, 172, 495, 461, '6632 lever 3M', 0.2697998285293579]]
     # classes = ['6632 lever 3M']
     start = datetime.now()
-    boxes, classes = detection(image_path, width, height, model_fn, category_index)
+    boxes, classes = detection(image_path, width, height, model_fn, threshold, category_index)
     stop = datetime.now()
     class_present = actual_class in classes
 
@@ -70,13 +71,13 @@ def evaluate_detection(image_path, width, height, model_fn, category_index, actu
 
 
 if __name__ == "__main__":
+    import os
     
     parser = argparse.ArgumentParser()
 
     parser.add_argument("--model_path", "-mp", help="Path to model", type=str, required=True)
     parser.add_argument("--labels_path", "-lp", help="Path to labels map", type=str, default="workspace/data/label_map.pbtxt")
     parser.add_argument("--threshold", "-th", help="Detection threshold", type=float, default=0.2)
-    parser.add_argument("--images_dir", "-id", help="Images directory", type=str, default="eval")
     parser.add_argument("--im_width", "-iw", help="Image width", type=int, default=400)
     parser.add_argument("--im_height", "-ih", help="Image height", type=int, default=400)
     
@@ -87,18 +88,18 @@ if __name__ == "__main__":
     config = tf.compat.v1.ConfigProto()
     config.gpu_options.allow_growth = True
     session = tf.compat.v1.Session(config=config)
-    model_fn = tf.saved_model.load(namespace.model_path)
+    model_fn = tf.saved_model.load(os.path.join("workspace", "exported_models", namespace.model_path))
 
     validations = pd.read_csv("validation.csv")
+    
+    results = []
+    
+    with alive_bar(int(validations["class"].count())) as bar:
+        for _,item in validations.iterrows():
+            results.append(evaluate_detection(item["image"], namespace.im_width, namespace.im_height, model_fn, namespace.threshold, category_index, item["class"]))
+            bar()
 
-    results = pd.DataFrame(
-        [
-            *map(
-                lambda _,z: evaluate_detection(z["image"], namespace.im_width, namespace.im_height, model_fn, category_index, z["class"]), 
-                validations.iterrows()
-            )
-        ]
-    )
+    results = pd.DataFrame(results)
 
-    results.to_csv("validation_results.csv", index=False)
+    results.to_csv(os.path.join(namespace.model_path, "validation_results.csv"), index=False)
     
