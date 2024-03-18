@@ -11,13 +11,13 @@ SCRIPT_NAME = "model_main_tf2.py"
 process = None
 root = tk.Tk()
 
-def start_training(modelname):
+def start_training(modelname, turn_off=False):
     global process
-    process = Process(target=train_model, args=(modelname,))
+    process = Process(target=train_model, args=(modelname,turn_off))
     process.start()
     root.destroy()
     
-def train_model(modelname):
+def train_model(modelname, turn_off):
     time = datetime.now().strftime("%d-%m-%Y_%H%M%S")
     errors = open(f"logs/{modelname}_{time}-stdout.log", "wb")
 
@@ -47,7 +47,11 @@ def train_model(modelname):
     
     if not training_killed:
         run_evaluation(modelname, time)
-    
+        if turn_off:
+            os.system("shutdown /s /t 1")
+        
+def is_model_empty(modelname):
+    return (not os.path.exists(os.path.join("models", modelname, "checkpoint"))) and os.path.exists(os.path.join("models", modelname, "pipeline.config"))
 
 
 if __name__ == "__main__":
@@ -57,11 +61,16 @@ if __name__ == "__main__":
     label = ttk.Label(text="Wybierz model do nauczenia")
     label.place(x=20,y=30)
     
-    comobox = ttk.Combobox(values=[*filter(lambda z: os.path.exists(os.path.join("models", z, "pipeline.config")), os.listdir("models"))], width=50)
+    comobox = ttk.Combobox(values=[*filter(is_model_empty, os.listdir("models"))], width=50)
     comobox.place(x=20,y=50)
     
-    button = ttk.Button(text="Start", command=lambda: start_training(comobox.get()))
-    button.place(x=140,y=80)
+    shutdown = tk.IntVar()
+    
+    checkbox = ttk.Checkbutton(text="Wyłącz komputer po zakończeniu", variable=shutdown, onvalue=1, offvalue=0)
+    checkbox.place(x=20, y=80)
+    
+    button = ttk.Button(text="Start", command=lambda: start_training(comobox.get(), shutdown.get()))
+    button.place(x=140,y=120)
     
     root.mainloop()
     

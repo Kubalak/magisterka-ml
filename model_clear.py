@@ -28,7 +28,7 @@ if __name__ == "__main__":
     label = ttk.Label(text="Wybierz model do oczyszczenia")
     label.place(x=20,y=30)
     
-    comobox = ttk.Combobox(values=[*filter(lambda z: os.path.exists(os.path.join("workspace", "models", z, "pipeline.config")), os.listdir("workspace/models"))], width=50)
+    comobox = ttk.Combobox(values=[*filter(lambda z: os.path.exists(os.path.join("workspace", "models", z, "checkpoint")), os.listdir("workspace/models"))], width=50)
     comobox.place(x=20,y=50)
     
     button = ttk.Button(text="Wyczyść!", command=lambda: clear_model_dir(comobox.get()))

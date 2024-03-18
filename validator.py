@@ -75,7 +75,7 @@ if __name__ == "__main__":
     
     parser = argparse.ArgumentParser()
 
-    parser.add_argument("--model_path", "-mp", help="Path to model", type=str, required=True)
+    parser.add_argument("--model_path", "-mp", help="Path to model eg. efficientdet_d0_coco17_tpu-32", type=str, required=True)
     parser.add_argument("--labels_path", "-lp", help="Path to labels map", type=str, default="workspace/data/label_map.pbtxt")
     parser.add_argument("--threshold", "-th", help="Detection threshold", type=float, default=0.2)
     parser.add_argument("--im_width", "-iw", help="Image width", type=int, default=400)
@@ -88,7 +88,7 @@ if __name__ == "__main__":
     config = tf.compat.v1.ConfigProto()
     config.gpu_options.allow_growth = True
     session = tf.compat.v1.Session(config=config)
-    model_fn = tf.saved_model.load(os.path.join("workspace", "exported_models", namespace.model_path))
+    model_fn = tf.saved_model.load(os.path.join("workspace", "exported_models", namespace.model_path, "saved_model"))
 
     validations = pd.read_csv("validation.csv")
     
@@ -101,5 +101,5 @@ if __name__ == "__main__":
 
     results = pd.DataFrame(results)
 
-    results.to_csv(os.path.join(namespace.model_path, "validation_results.csv"), index=False)
+    results.to_csv(os.path.join("workspace", "exported_models", namespace.model_path, "validation_results.csv"), index=False)
     
