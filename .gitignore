@@ -173,7 +173,10 @@ cython_debug/
 /workspace/models/*/ckpt*
 /workspace/models/*/train/
 /workspace/models/*/eval/
-workspace/exported_models/
+/workspace/exported_models/**/checkpoint/*
+/workspace/exported_models/**/saved_model/*
+/workspace/exported_models/**/pipeline.config
+!/exported_models/**/validation_results.csv
 
 # Tmp and local files 
 
