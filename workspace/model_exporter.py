@@ -6,6 +6,9 @@ SCRIPT_NAME = "exporter_main_v2.py"
 
 
 def export_model(modelname):
+    
+    os.makedirs(os.path.join("exported_models", namespace.model_dir_name), exist_ok=True)
+    
     subproc = subprocess.Popen(
         f'python {SCRIPT_NAME} --pipeline_config_path="models/{modelname}/pipeline.config" --trained_checkpoint_dir="models/{modelname}" --output_directory="exported_models/{modelname}" --input_type=image_tensor',
         shell=True,
