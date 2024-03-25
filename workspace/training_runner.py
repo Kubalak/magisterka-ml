@@ -11,13 +11,30 @@ SCRIPT_NAME = "model_main_tf2.py"
 process = None
 root = tk.Tk()
 
-def start_training(modelname, turn_off=False):
+def start_training(modelname, turn_off, evaluate):
+    """Starts a new process to run and control training. Closes main app window.
+    
+    Arguments:
+    modelname -- Name of the model (directory).
+    turn_off -- If set to `True` computer will turn off after training (if training has not been interrupted).
+    evaluate -- If set to `True` evaluaion script will be run after training see `eval_runner.py`.
+    """
     global process
-    process = Process(target=train_model, args=(modelname,turn_off))
+    process = Process(target=train_model, args=(modelname,turn_off, evaluate))
     process.start()
     root.destroy()
     
-def train_model(modelname, turn_off):
+def train_model(modelname, turn_off, evaluate):
+    """Executes and controls training process. 
+    Kills training if `nan` is found in total loss.
+
+    NOTE: This solution is designed to work in Windows environment.
+
+    Arguments:
+    modelname -- Name of the model (directory).
+    turn_off -- If set to `True` computer will turn off after training (and evaluation if set).
+    evaluae -- If set to `True` evaluaion script will be run after training see `eval_runner.py`.
+    """
     time = datetime.now().strftime("%d-%m-%Y_%H%M%S")
     errors = open(f"logs/{modelname}_{time}-stdout.log", "wb")
 
@@ -37,7 +54,7 @@ def train_model(modelname, turn_off):
         sys.stdout.write(c.decode('utf-8',  errors='ignore'))
         with open(f"logs/{modelname}_{time}-stderr.log", "ab") as logfile:
             logfile.write(c)
-            if c.decode('utf-8', errors='ignore').find("'Loss/classification_loss': nan") != -1:
+            if c.decode('utf-8', errors='ignore').find("'Loss/total_loss': nan") != -1:
                 print("Killing broken learning process")
                 logfile.write("Killing broken learning process...\n".encode('utf-8'))
                 subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
@@ -45,12 +62,14 @@ def train_model(modelname, turn_off):
             
     errors.close()
     
-    if not training_killed:
+    if not training_killed and subproc.returncode == 0 and evaluate:
         run_evaluation(modelname, time)
-        if turn_off:
-            os.system("shutdown /s /t 1")
+    
+    if not training_killed and turn_off:
+        os.system("shutdown /s /t 1")
         
 def is_model_empty(modelname):
+    """Tells whether model dir passed via `modelname` is empty (contains only `pipeline.config` file)."""
     return (not os.path.exists(os.path.join("models", modelname, "checkpoint"))) and os.path.exists(os.path.join("models", modelname, "pipeline.config"))
 
 
@@ -65,12 +84,16 @@ if __name__ == "__main__":
     comobox.place(x=20,y=50)
     
     shutdown = tk.IntVar()
+    evaluate = tk.IntVar(value=1)
     
     checkbox = ttk.Checkbutton(text="Wyłącz komputer po zakończeniu", variable=shutdown, onvalue=1, offvalue=0)
     checkbox.place(x=20, y=80)
-    
+
+    eval_box =  ttk.Checkbutton(text="Uruchom ewaluację po zakończeniu uczenia", variable=evaluate, onvalue=1, offvalue=0)
+    eval_box.place(x=20, y=100)
+
     button = ttk.Button(text="Start", command=lambda: start_training(comobox.get(), shutdown.get()))
-    button.place(x=140,y=120)
+    button.place(x=140,y=140)
     
     root.mainloop()
     

@@ -8,6 +8,10 @@ from multiprocessing import Pool, cpu_count
 states = ['|', '/', '-', '\\']
 
 def to_tfrecord(filename):
+    """Reads a `filename` and associated `*.json` file with annotations.
+    Returns:
+    tf.train.Example -- data in TFRecord format.
+    """
     with tf.io.gfile.GFile(filename, 'rb') as fid:
         encoded_image = fid.read()
     meta_filename = '.'.join([*filename.split('.')[:-1], 'json'])
@@ -31,6 +35,7 @@ def to_tfrecord(filename):
     }))
     
 def tf_from_dir(dirname):
+    """Scans directory and converts all JPG files into `*.record` files."""
     files = filter(lambda z: z.endswith('.jpg'), os.listdir(os.path.join('bricks', dirname)))
     records = [*map(lambda z: to_tfrecord(os.path.join('bricks', dirname, z)), files)]
     for index, record in enumerate(records):
