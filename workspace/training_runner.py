@@ -1,4 +1,5 @@
 import tkinter as tk
+from tkinter import messagebox
 from tkinter import ttk
 from multiprocessing import Process
 import subprocess
@@ -39,6 +40,7 @@ def train_model(modelname, turn_off, evaluate):
     errors = open(f"logs/{modelname}_{time}-stdout.log", "wb")
 
     training_killed = False
+    training_failed = False
     
     subproc = subprocess.Popen(
         f'python {SCRIPT_NAME} --pipeline_config_path="models/{modelname}/pipeline.config" --model_dir="models/{modelname}" --checkpoint_every_n=1000 --num_workers=1 --alsologtostderr',
@@ -54,19 +56,28 @@ def train_model(modelname, turn_off, evaluate):
         sys.stdout.write(c.decode('utf-8',  errors='ignore'))
         with open(f"logs/{modelname}_{time}-stderr.log", "ab") as logfile:
             logfile.write(c)
-            if c.decode('utf-8', errors='ignore').find("'Loss/total_loss': nan") != -1:
+            line = c.decode('utf-8', errors='ignore')
+            if line.find("'Loss/total_loss': nan") != -1:
                 print("Killing broken learning process")
                 logfile.write("Killing broken learning process...\n".encode('utf-8'))
                 subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
                 training_killed = True
+            elif line.find("RESOURCE_EXHAUSTED: Out of memory") != -1:
+                training_failed = True
+            elif line.find("UnicodeDecodeError:") != -1:
+                training_failed = True
             
     errors.close()
+    
+    if training_failed:
+        messagebox.showerror("Podczas uczenia wystąpił błąd!", f"Sprawdź plik 'logs/{modelname}_{time}-stderr.log' aby uzyskać więcej informacji.")
+        return
     
     if not training_killed and subproc.returncode == 0 and evaluate:
         run_evaluation(modelname, time)
     
     if not training_killed and turn_off:
-        os.system("shutdown /s /t 1")
+        os.system("shutdown /s /t 10")
         
 def is_model_empty(modelname):
     """Tells whether model dir passed via `modelname` is empty (contains only `pipeline.config` file)."""
@@ -92,7 +103,7 @@ if __name__ == "__main__":
     eval_box =  ttk.Checkbutton(text="Uruchom ewaluację po zakończeniu uczenia", variable=evaluate, onvalue=1, offvalue=0)
     eval_box.place(x=20, y=100)
 
-    button = ttk.Button(text="Start", command=lambda: start_training(comobox.get(), shutdown.get()))
+    button = ttk.Button(text="Start", command=lambda: start_training(comobox.get(), shutdown.get(), evaluate.get()))
     button.place(x=140,y=140)
     
     root.mainloop()
