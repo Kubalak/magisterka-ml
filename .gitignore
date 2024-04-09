@@ -187,3 +187,8 @@ cython_debug/
 
 # NVVM local dir
 nvvm/
+
+.idea/
+
+yolo/labels/
+yolo/images/
