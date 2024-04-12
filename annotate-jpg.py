@@ -2,7 +2,7 @@ import os
 import json
 import cv2 
 import time
-
+from alive_progress import alive_bar
 
 def prepare(filename):
     img = cv2.imread(filename,0)
@@ -28,10 +28,15 @@ def get_bounds(pixels):
                 annotations["ymin"] = j
             elif pixels[i][j] and j > annotations["ymax"]:
                 annotations["ymax"] = j
-    annotations["xmin"] -= 1
-    annotations["xmax"] += 1
-    annotations["ymin"] -= 1
-    annotations["ymax"] += 1
+                
+    if annotations["xmin"] > 0:
+        annotations["xmin"] -= 1
+    if annotations["xmax"] < width:
+        annotations["xmax"] += 1
+    if annotations["ymin"] > 0:
+        annotations["ymin"] -= 1
+    if annotations["ymax"] < height:
+        annotations["ymax"] += 1
     return annotations
 
 def annotate(filename:str, class_name, class_id):
@@ -56,23 +61,25 @@ def mark(directories):
     files = {}
     meta = []
     index = 0
-    for directory in directories:
-        files[directory] = [*filter(lambda z: z.endswith('.png'), os.listdir(os.path.join('bricks', directory)))]
-        print(directory, end=" "*64+"\r")
-        # expr = re.compile("^\\d+")
-        # class_id = int(expr.search(dirname).group(0))
-        index+=1
-        for file in files[directory]:
-            info = annotate(os.path.join('bricks', directory, file), directory, index)
-            #cv2.imwrite(os.path.join('bricks-jpg', directory, info['filename']), image, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
-            with open(os.path.join('bricks-jpg', directory, '.'.join([*file.split('.')[:-1], 'json'])), 'w') as file:
-                json.dump(info,file,indent=2)
-        
-        meta.append({'id': index, 'name': directory})
+    with alive_bar(len(directories)) as bar:
+        for directory in directories:
+            files[directory] = [*filter(lambda z: z.endswith('.jpg'), os.listdir(os.path.join('bricks', directory)))]
+            print(directory, end=" "*64+"\r")
+            # expr = re.compile("^\\d+")
+            # class_id = int(expr.search(dirname).group(0))
+            index+=1
+            for file in files[directory]:
+                info = annotate(os.path.join('bricks', directory, file), directory, index)
+                #cv2.imwrite(os.path.join('bricks-jpg', directory, info['filename']), image, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+                with open(os.path.join('bricks', directory, '.'.join([*file.split('.')[:-1], 'json'])), 'w') as file:
+                    json.dump(info,file,indent=2)
+            
+            meta.append({'id': index, 'name': directory})
+            bar()
     
     with open("labels.pbtxt", "w") as file:
         for item in meta:
-            file.write(f"item {'{'}\n  id: {item['id']}\n  name: {item['name']}\n{'}'}\n")
+            file.write(f"item {'{'}\n  id: {item['id']}\n  name: \'{item['name']}\'\n{'}'}\n")
     print()
 
 

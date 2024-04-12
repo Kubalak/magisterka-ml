@@ -191,8 +191,7 @@ nvvm/
 .idea/
 
 # Labels and images for yolo
-yolo/labels/
-yolo/images/
+yolo/dataset/
 
 # Yolo pre-trained models
 yolov8*.pt
