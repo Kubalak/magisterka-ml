@@ -24,7 +24,7 @@ if __name__ == "__main__":
             files = [*filter(lambda z: z.endswith(".json"), os.listdir(join("bricks", class_name)))]
             results = [*map(get_yolo, map(lambda z: join("bricks", class_name, z), files))]
             for file, label in results:
-                with open(join("yolo", "labels", file), "w") as o:
+                with open(join("yolo", "dataset", "labels", file), "w") as o:
                     o.write(label)
             bar()
         
