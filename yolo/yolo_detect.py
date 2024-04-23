@@ -1,21 +1,28 @@
-from ultralytics import YOLO
+import io
 from PIL import Image
+from ultralytics import YOLO
 from argparse import ArgumentParser
 
-def detect(filename:str, model:YOLO, threshold=0.0):
-    img = Image.open(filename)
-    results = model.predict(img, agnostic_nms=True, verbose=False)
-    filename = filename.split("/")[-1]
-    filename = filename.split("\\")[-1]
+def detect(filename:str|bytes, model:YOLO, threshold=0.0):
     
-    detecions = {
-        "image": filename,
-        "time": None,
-        "boxes": []
-    }
+    img = None 
+    detecions = {}
+    
+    if type(filename) is str:
+        img = Image.open(filename)
+        filename = filename.split("/")[-1]
+        filename = filename.split("\\")[-1]
+        detecions["filename"] = filename
+    else:
+        img = Image.open(io.BytesIO(filename))
+    
+    detecions["time"] = None
+    detecions["boxes"] = []
+    
+    results = model.predict(img, agnostic_nms=True, verbose=False)
     
     if len(results) > 1:
-        print("Warn multiple results found")
+        print("Warn multiple results found only first will be used.")
     
     result = results[0]
     

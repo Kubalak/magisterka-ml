@@ -176,6 +176,7 @@ cython_debug/
 /workspace/exported_models/**/checkpoint/*
 /workspace/exported_models/**/saved_model/*
 /workspace/exported_models/**/pipeline.config
+/workspace/exported_models/**/weights/*
 !/exported_models/**/validation_results.csv
 
 # Tmp and local files 
@@ -195,3 +196,6 @@ yolo/dataset/
 
 # Yolo pre-trained models
 yolov8*.pt
+
+# Yolo runs
+/yolo/runs/detect/*

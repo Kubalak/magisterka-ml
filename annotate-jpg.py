@@ -7,7 +7,7 @@ from alive_progress import alive_bar
 def prepare(filename):
     img = cv2.imread(filename,0)
     height,width = img.shape
-    return [[img.item(j,i) != 0 for j in range(height)] for i in range(width)]
+    return (img, [[img.item(j,i) != 0 for j in range(height)] for i in range(width)])
 
 def get_bounds(pixels):
     width = len(pixels)
@@ -69,9 +69,9 @@ def mark(directories):
             # class_id = int(expr.search(dirname).group(0))
             index+=1
             for file in files[directory]:
-                info = annotate(os.path.join('bricks', directory, file), directory, index)
-                #cv2.imwrite(os.path.join('bricks-jpg', directory, info['filename']), image, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
-                with open(os.path.join('bricks', directory, '.'.join([*file.split('.')[:-1], 'json'])), 'w') as file:
+                image, info = annotate(os.path.join('bricks', directory, file), directory, index)
+                cv2.imwrite(os.path.join('bricks-jpg', directory, info['filename']), image, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+                with open(os.path.join('bricks-jpg', directory, '.'.join([*file.split('.')[:-1], 'json'])), 'w') as file:
                     json.dump(info,file,indent=2)
             
             meta.append({'id': index, 'name': directory})
