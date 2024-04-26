@@ -1,11 +1,13 @@
-import tkinter as tk
-from tkinter import messagebox
-from tkinter import ttk
-from multiprocessing import Process
-import subprocess
 import os, sys
+import subprocess
+import pandas as pd
+import tkinter as tk
+from tkinter import ttk
 from datetime import datetime
+from tkinter import messagebox
+from multiprocessing import Process
 from eval_runner import run_evaluation
+from detection_utils.tensor.model_download_utils import download_archive, untar_archive
 
 SCRIPT_NAME = "model_main_tf2.py"
 
@@ -36,6 +38,22 @@ def train_model(modelname, turn_off, evaluate):
     turn_off -- If set to `True` computer will turn off after training (and evaluation if set).
     evaluae -- If set to `True` evaluaion script will be run after training see `eval_runner.py`.
     """
+    if not os.path.exists(f"pre_trained_models/{modelname}/saved_model"):
+        print("Pre trained model does not exist, downloading...")
+        df = pd.read_csv("../models.csv")
+        models = df[df['link'].str.contains(modelname)]
+        models = models.reset_index()
+        model = models.iloc[0]
+        if download_archive(model['link']):
+            if not untar_archive(pre_trained_dir="pre_trained_models", models_dir="models"):
+                messagebox.showerror("Wypakowanie nie powiodło się", "Nie udało się wypakować archiwum modelu")
+                return
+        else:
+            messagebox.showerror("Pobieranie modelu nie powiodło się", f"Nie udało się pobrać archiwum modelu {modelname}")
+            return
+        print("Download successfull!")
+                
+    
     time = datetime.now().strftime("%d-%m-%Y_%H%M%S")
     errors = open(f"logs/{modelname}_{time}-stdout.log", "wb")
 

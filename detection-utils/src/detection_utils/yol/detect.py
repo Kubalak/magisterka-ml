@@ -42,8 +42,7 @@ def detect(filename:str|bytes, model:YOLO, threshold=0.0):
 if __name__ == "__main__":
     parser = ArgumentParser()
     parser.add_argument("model", help="Path to trained model", required=True)
-    parser.add_argument("--image", "-img", help="Path to image", required=True)
-    parser.add_argument("--labels", "-lab", help="Path to labels mapping file", required=True)
+    parser.add_argument("--image", "-img", help="Path to image", type=str, required=True)
     
     namespace = parser.parse_args()
     

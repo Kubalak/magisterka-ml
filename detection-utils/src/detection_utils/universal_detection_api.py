@@ -4,7 +4,7 @@ import numpy as np
 from PIL import Image
 import tensorflow as tf
 from ultralytics import YOLO
-from yolo.yolo_detect import detect
+from .yol.detect import detect
 from timeit import default_timer as timer
 from object_detection.utils import label_map_util
 
@@ -19,20 +19,20 @@ class UniversalObjectDetector:
         You need to pass `category_index` path when using `TensorFlow` model.
 
         Args:
-            modelpath (str): Name of model directory in `exported_models` directory.
+            modelpath (str): Path to model directory which contains `weights` YOLO model or `saved_model` for TensorFlow`.
             category_index (str): Path to label map. Used for TensorFlow models.
         Raises:
             FileNotFoundError: If directory does not exist or does not contain required file.
             RuntimeError: If directory contains both YOLO and TensorFlow models.
         """
-        modeldir = os.path.join("workspace", "exported_models", modelpath)
+        modeldir = os.path.join( modelpath)
         if not os.path.exists(modeldir):
             raise FileNotFoundError(f"Model {modelpath} not found in exported models.")
         modeltype = None
-        yolomp = os.path.join("workspace", "exported_models", modelpath, "weights")
-        tfmp = os.path.join("workspace", "exported_models", modelpath, "saved_model")
+        yolomp = os.path.join(modelpath, "weights")
+        tfmp = os.path.join(modelpath, "saved_model")
         if os.path.exists(yolomp) and os.path.isdir(yolomp):
-            if not os.path.exists(os.path.join("workspace", "exported_models", modelpath, "weights", "best.pt")):
+            if not os.path.exists(os.path.join(modelpath, "weights", "best.pt")):
                 raise FileNotFoundError("No best.pt file found in yolo model dir.")
             modeltype = 'yolo'
         if os.path.exists(tfmp) and os.path.isdir(tfmp):
@@ -43,14 +43,10 @@ class UniversalObjectDetector:
             raise FileNotFoundError("Selected model does not contain weights or checkpoint directory.")
         
         if modeltype == 'tf':
-            config = tf.compat.v1.ConfigProto()
-            config.gpu_options.allow_growth = True
-            session = tf.compat.v1.Session(config=config)
-            self.__model = tf.saved_model.load(tfmp)
             self.__category_index = label_map_util.create_category_index_from_labelmap(category_index, use_display_name=True)
         
         else:
-            self.__model = YOLO(os.path.join("workspace", "exported_models", modelpath, "weights", "best.pt"))
+            self.__model = YOLO(os.path.join(modelpath, "weights", "best.pt"))
         
         self.__modeltype = modeltype
     
@@ -66,7 +62,7 @@ class UniversalObjectDetector:
             dict: Dictionary with detections.
         """
         if not isinstance(file, str) and not isinstance(file, bytes):
-            raise TypeError("Invalid filename argument type! Allowed only str and bytes.")
+            raise TypeError("file allowed only to be str or bytes!")
         
         if self.__modeltype == 'tf':
             return self.__detect_tf(file, threshold)
