@@ -11,14 +11,14 @@ def export_model(modelname):
     os.makedirs(os.path.join("exported_models", namespace.model_dir_name), exist_ok=True)
     
     subproc = subprocess.Popen(
-        f'python {SCRIPT_NAME} --pipeline_config_path="models/{modelname}/pipeline.config" --trained_checkpoint_dir="models/{modelname}" --output_directory="exported_models/{modelname}" --input_type=image_tensor',
+        f'python {SCRIPT_NAME} --pipeline_config_path="models/{modelname}/pipeline.config" --trained_checkpoint_dir="models/{modelname}" --output_directory="exported_models/{modelname}" --input_type=image_tensor --alsologtostderr',
         shell=True,
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE
     )
 
     with open(f"logs/{modelname}_export.log", "w") as logfile:
-        logfile.write(f'python {SCRIPT_NAME} --pipeline_config_path="models/{modelname}/pipeline.config" --trained_checkpoint_dir="models/{modelname}" --output_directory="exported_models/{modelname}" --input_type=image_tensor\n')
+        logfile.write(f'python {SCRIPT_NAME} --pipeline_config_path="models/{modelname}/pipeline.config" --trained_checkpoint_dir="models/{modelname}" --output_directory="exported_models/{modelname}" --input_type=image_tensor --alsologtostderr\n')
         
 
     while subproc.poll() is None:
@@ -28,7 +28,7 @@ def export_model(modelname):
             logfile.write(line)
             logfile.write(errors)
         
-        sys.stdout.write(line.decode('utf-8',  errors='ignore'))    
+        sys.stdout.write(line.decode('utf-8',  errors='ignore'))
         sys.stdout.write(errors.decode('utf-8',  errors='ignore'))
 
 

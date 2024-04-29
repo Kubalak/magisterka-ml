@@ -44,7 +44,7 @@ class UniversalObjectDetector:
         
         if modeltype == 'tf':
             self.__category_index = label_map_util.create_category_index_from_labelmap(category_index, use_display_name=True)
-        
+            self.__model = tf.saved_model.load(tfmp)
         else:
             self.__model = YOLO(os.path.join(modelpath, "weights", "best.pt"))
         

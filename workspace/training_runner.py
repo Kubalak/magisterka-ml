@@ -1,4 +1,8 @@
+import re
+import psutil
+import cpuinfo
 import os, sys
+import platform
 import subprocess
 import pandas as pd
 import tkinter as tk
@@ -13,6 +17,50 @@ SCRIPT_NAME = "model_main_tf2.py"
 
 process = None
 root = tk.Tk()
+
+def human_readable(size:int):
+    index = 0
+    sizes = ['B', 'KB', 'MB', 'GB', 'TB']
+    while size//1024 > 1:
+        size /= 1024
+        index += 1
+    return (size, sizes[index])
+
+def get_system_info():
+    uname = platform.uname()
+    arch = platform.architecture()
+    machine = platform.machine()
+    info_cpu = cpuinfo.get_cpu_info()
+    mem = psutil.virtual_memory()
+    ram_total = human_readable(mem.total)
+    ram_avail = human_readable(mem.available)
+    ram_used = human_readable(mem.used)
+    cpu_usage = psutil.cpu_percent()
+    cpu_freq = psutil.cpu_freq()
+    regex = re.compile(r'^GPU \d+:.+\(')
+    
+    gpu_info = subprocess.getoutput("nvidia-smi -L").split('\n')
+    gpus = []
+    for info in gpu_info:
+        matched = regex.match(info)
+        if matched is not None:
+            gpus.append(matched.group(0)[:-1].split(':'))
+    
+    info =f'+{"System info".center(62, "-")}+\n'
+    info += "| Uname".ljust(17)+f"{uname.system} {uname.release}".ljust(46) + '|\n'
+    info += "| Architecture".ljust(17) + arch[0].ljust(46) + '|\n'
+    info += "| Machine".ljust(17) + machine.ljust(46) + '|\n'
+    info += "| CPU".ljust(17)+ info_cpu['brand_raw'].ljust(46)+  '|\n'
+    info += "| Core count".ljust(17)+  f"{info_cpu['count']}".ljust(46)+  '|\n'
+    info += "| CPU frequency".ljust(17) +  f"Max {cpu_freq.max:.2f} MHz Current {cpu_freq.current:.2f} MHz".ljust(46)+  '|\n'
+    info += "| CPU usage".ljust(17)+  f"{cpu_usage:.2f} %".ljust(46)+  '|\n'
+    info += "| RAM total".ljust(17)+  f"{ram_total[0]:.2f} {ram_total[1]}".ljust(46)+  '|\n'
+    info += "| RAM used".ljust(17)+  f"{ram_used[0]:.2f} {ram_used[1]}".ljust(46)+  '|\n'
+    info += "| RAM available".ljust(17)+  f"{ram_avail[0]:.2f} {ram_avail[1]}".ljust(46)+  '|\n'
+    for gpu_id,  gpu_name in gpus:
+        info += f'| {gpu_id}'.ljust(17) + f"{gpu_name.strip()}".ljust(46) + '|\n'
+    info += f'+{"End system info".center(62, "-")}+'
+    return info
 
 def start_training(modelname, turn_off, evaluate):
     """Starts a new process to run and control training. Closes main app window.
@@ -67,7 +115,8 @@ def train_model(modelname, turn_off, evaluate):
         stderr=subprocess.PIPE
     )
     with open(f"logs/{modelname}_{time}-stderr.log", "wb") as logfile:
-        logfile.write(f'python {SCRIPT_NAME} --pipeline_config_path="models/{modelname}/pipeline.config" --model_dir="models/{modelname}" --checkpoint_every_n=1000 --num_workers=1 --alsologtostderr\n'.encode('utf-8'))
+        logfile.write(get_system_info().encode('utf-8'))
+        logfile.write(f'\npython {SCRIPT_NAME} --pipeline_config_path="models/{modelname}/pipeline.config" --model_dir="models/{modelname}" --checkpoint_every_n=1000 --num_workers=1 --alsologtostderr\n'.encode('utf-8'))
         
     while subproc.poll() is None:
         c = subproc.stderr.readline()
@@ -93,7 +142,29 @@ def train_model(modelname, turn_off, evaluate):
         run_evaluation(modelname, time)
     
     if not training_killed and turn_off:
-        os.system("shutdown /s /t 10")
+        root = tk.Tk()
+        root.title("Info")
+        root.geometry("200x100")
+        root.resizable(width=False, height=False)
+        timer = tk.IntVar(value=10)
+        txt = ttk.Label(text=f"Komputer wylaczy sie za {timer.get()}s")
+        btn = ttk.Button(text="Anuluj", command=root.destroy)
+        
+        def countdown():
+            if timer.get() > 0:
+                timer.set(timer.get() - 1)
+                txt.config(text=f"Komputer wylaczy sie za {timer.get()}s")
+                root.after(1000, countdown)
+            else:
+                root.destroy()
+        
+        txt.place(x=20,y=20)
+        btn.place(x=60,y=60)
+        root.after(1000, countdown)
+        
+        root.mainloop()
+        if timer.get() == 0:
+            os.system("shutdown /s /t 1")
         
 def is_model_empty(modelname):
     """Tells whether model dir passed via `modelname` is empty (contains only `pipeline.config` file)."""

@@ -9,10 +9,18 @@ from argparse import ArgumentParser
 
 
 def box_drawer(image, classname, boxes, ax:matplotlib.axes.Axes):
-    if type(image) is str:
-        image = cv2.imread(image)
-    elif type(image) is bytes:
+    """Draws a detection on image provided.
+
+    Args:
+        image (str|bytes): Path to image or image encoded as bytes.
+        classname (str): Name of valid class.
+        boxes (list): Detection boxes returned in UniversalDetector dict.
+        ax (matplotlib.axes.Axes): Axes on which to draw detections
+    """
+    if type(image) is bytes:
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
+    else:
+        image = cv2.imread(image)
     
     
     ax.set_xticks([])
@@ -20,8 +28,8 @@ def box_drawer(image, classname, boxes, ax:matplotlib.axes.Axes):
     ax.imshow(image)
     
     if len(boxes):
-        
-        boxes = sorted(boxes, key=lambda z: z[-1])
+        boxes = sorted(boxes, key=lambda z: z[-1]) 
+        #Ensures prediction with highest score is on top.
         for box in boxes:
             color = 'g' if classname == box[-2] else 'r'
             w = box[2] - box[0]

@@ -5,7 +5,7 @@ def main():
     setup(
         name="detection_utils",
         description="Object detection utilities for TensorFlow and YOLO.",
-        version="0.0.1",
+        version="0.0.2",
         author="Jakub Jach",
         packages=find_packages("src"),
         package_dir={
