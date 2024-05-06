@@ -1,251 +1,251 @@
 image,time,boxes,best,best_class,class_present,class_score
-2357 brick corner 1x2x2 000L.jpg,8162.549999999999,[],N/A,N/A,False,N/A
-2357 brick corner 1x2x2 002L.jpg,87.06899999999999,[],N/A,N/A,False,N/A
-2357 brick corner 1x2x2 011R.jpg,85.95,[],N/A,N/A,False,N/A
-2357 brick corner 1x2x2 046R.jpg,103.056,[],N/A,N/A,False,N/A
-2357 brick corner 1x2x2 052R.jpg,85.81700000000001,[],N/A,N/A,False,N/A
-2420 plate corner 2x2 000L.jpg,112.181,[],N/A,N/A,False,N/A
-2420 plate corner 2x2 015L.jpg,83.411,[],N/A,N/A,False,N/A
-2420 plate corner 2x2 027R.jpg,83.952,[],N/A,N/A,False,N/A
-2420 plate corner 2x2 040R.jpg,84.951,[],N/A,N/A,False,N/A
-2420 plate corner 2x2 049L.jpg,83.836,[],N/A,N/A,False,N/A
-2780 Peg with friction 000R.jpg,89.0,[],N/A,N/A,False,N/A
-2780 Peg with friction 015L.jpg,78.28699999999999,[],N/A,N/A,False,N/A
-2780 Peg with friction 020L.jpg,76.954,[],N/A,N/A,False,N/A
-2780 Peg with friction 032L.jpg,76.958,[],N/A,N/A,False,N/A
-2780 Peg with friction 044L.jpg,76.906,[],N/A,N/A,False,N/A
-3001 brick 2x4 001L.jpg,123.987,[],N/A,N/A,False,N/A
-3001 brick 2x4 006R.jpg,76.956,[],N/A,N/A,False,N/A
-3001 brick 2x4 016L.jpg,85.106,[],N/A,N/A,False,N/A
-3001 brick 2x4 022R.jpg,85.80799999999999,[],N/A,N/A,False,N/A
-3001 brick 2x4 030L.jpg,94.971,[],N/A,N/A,False,N/A
-3002 brick 2x3 000L.jpg,119.274,[],N/A,N/A,False,N/A
-3002 brick 2x3 004L.jpg,117.922,[],N/A,N/A,False,N/A
-3002 brick 2x3 005R.jpg,111.149,[],N/A,N/A,False,N/A
-3002 brick 2x3 020L.jpg,123.999,[],N/A,N/A,False,N/A
-3002 brick 2x3 035R.jpg,93.072,[],N/A,N/A,False,N/A
-3003 brick 2x2 000L.jpg,125.01200000000001,[],N/A,N/A,False,N/A
-3003 brick 2x2 010L.jpg,75.946,[],N/A,N/A,False,N/A
-3003 brick 2x2 012L.jpg,75.96600000000001,[],N/A,N/A,False,N/A
-3003 brick 2x2 009R.jpg,75.947,[],N/A,N/A,False,N/A
-3003 brick 2x2 013L.jpg,76.957,[],N/A,N/A,False,N/A
-3004 brick 1x2 001L.jpg,106.334,[],N/A,N/A,False,N/A
-3004 brick 1x2 011L.jpg,76.006,[],N/A,N/A,False,N/A
-3004 brick 1x2 007R.jpg,75.907,[],N/A,N/A,False,N/A
-3004 brick 1x2 016L.jpg,77.956,[],N/A,N/A,False,N/A
-3004 brick 1x2 000L.jpg,76.956,[],N/A,N/A,False,N/A
-3005 brick 1x1 001R.jpg,105.93900000000001,[],N/A,N/A,False,N/A
-3005 brick 1x1 006L.jpg,75.95599999999999,[],N/A,N/A,False,N/A
-3005 brick 1x1 008L.jpg,73.958,[],N/A,N/A,False,N/A
-3005 brick 1x1 012L.jpg,73.957,[],N/A,N/A,False,N/A
-3005 brick 1x1 010R.jpg,75.95599999999999,[],N/A,N/A,False,N/A
-3010 brick 1x4 002L.jpg,111.953,[],N/A,N/A,False,N/A
-3010 brick 1x4 003L.jpg,75.942,[],N/A,N/A,False,N/A
-3010 brick 1x4 011L.jpg,76.955,[],N/A,N/A,False,N/A
-3010 brick 1x4 013R.jpg,74.95599999999999,[],N/A,N/A,False,N/A
-3010 brick 1x4 016L.jpg,74.958,[],N/A,N/A,False,N/A
-3020 plate 2x4 000L.jpg,104.93900000000001,[],N/A,N/A,False,N/A
-3020 plate 2x4 008L.jpg,75.957,[],N/A,N/A,False,N/A
-3020 plate 2x4 012R.jpg,75.957,[],N/A,N/A,False,N/A
-3020 plate 2x4 009L.jpg,73.959,[],N/A,N/A,False,N/A
-3020 plate 2x4 011R.jpg,74.958,[],N/A,N/A,False,N/A
-3021 plate 2x3 001L.jpg,125.92800000000001,[],N/A,N/A,False,N/A
-3021 plate 2x3 014L.jpg,75.957,[],N/A,N/A,False,N/A
-3021 plate 2x3 020R.jpg,74.958,[],N/A,N/A,False,N/A
-3021 plate 2x3 019L.jpg,82.952,[],N/A,N/A,False,N/A
-3021 plate 2x3 016R.jpg,80.954,[],N/A,N/A,False,N/A
-3022 Plate 2x2 000L.jpg,78.955,[],N/A,N/A,False,N/A
-3022 Plate 2x2 007L.jpg,75.95599999999999,[],N/A,N/A,False,N/A
-3022 Plate 2x2 012L.jpg,75.957,[],N/A,N/A,False,N/A
-3022 Plate 2x2 019R.jpg,75.957,[],N/A,N/A,False,N/A
-3022 Plate 2x2 016L.jpg,78.956,[],N/A,N/A,False,N/A
-3023 Plate 1x2 008R.jpg,90.949,[],N/A,N/A,False,N/A
-3023 Plate 1x2 017L.jpg,75.95599999999999,[],N/A,N/A,False,N/A
-3023 Plate 1x2 023L.jpg,75.957,[],N/A,N/A,False,N/A
-3023 Plate 1x2 020R.jpg,75.95599999999999,[],N/A,N/A,False,N/A
-3023 Plate 1x2 016L.jpg,75.95599999999999,[],N/A,N/A,False,N/A
-3024 plate 1x1 000L.jpg,91.947,[],N/A,N/A,False,N/A
-3024 plate 1x1 003R.jpg,75.957,[],N/A,N/A,False,N/A
-3024 plate 1x1 017L.jpg,76.956,[],N/A,N/A,False,N/A
-3024 plate 1x1 104L.jpg,74.957,[],N/A,N/A,False,N/A
-3024 plate 1x1 104R.jpg,77.955,[],N/A,N/A,False,N/A
-3037 roof tile 1x4 000R.jpg,100.94300000000001,[],N/A,N/A,False,N/A
-3037 roof tile 1x4 004L.jpg,82.953,[],N/A,N/A,False,N/A
-3037 roof tile 1x4 010L.jpg,81.952,[],N/A,N/A,False,N/A
-3037 roof tile 1x4 013R.jpg,81.956,[],N/A,N/A,False,N/A
-3037 roof tile 1x4 321R.jpg,94.944,[],N/A,N/A,False,N/A
-3038 roof tile 2x3 006R.jpg,118.932,[],N/A,N/A,False,N/A
-3038 roof tile 2x3 000R.jpg,89.957,[],N/A,N/A,False,N/A
-3038 roof tile 2x3 003L.jpg,82.944,[],N/A,N/A,False,N/A
-3038 roof tile 2x3 015R.jpg,83.951,[],N/A,N/A,False,N/A
-3038 roof tile 2x3 052R.jpg,87.952,[],N/A,N/A,False,N/A
-3039 roof tile 2x2 007L.jpg,85.966,[],N/A,N/A,False,N/A
-3039 roof tile 2x2 020L.jpg,81.83200000000001,[],N/A,N/A,False,N/A
-3039 roof tile 2x2 028R.jpg,83.953,[],N/A,N/A,False,N/A
-3039 roof tile 2x2 040R.jpg,87.794,[],N/A,N/A,False,N/A
-3039 roof tile 2x2 073R.jpg,84.111,[],N/A,N/A,False,N/A
-3040 roof tile 1x2 005R.jpg,96.539,[],N/A,N/A,False,N/A
-3040 roof tile 1x2 012R.jpg,84.593,[],N/A,N/A,False,N/A
-3040 roof tile 1x2 013L.jpg,81.954,[],N/A,N/A,False,N/A
-3040 roof tile 1x2 015R.jpg,84.951,[],N/A,N/A,False,N/A
-3040 roof tile 1x2 034L.jpg,83.98,[],N/A,N/A,False,N/A
-3045 roof corner outside tile 2x2 002R.jpg,95.093,[],N/A,N/A,False,N/A
-3045 roof corner outside tile 2x2 051L.jpg,93.61999999999999,[],N/A,N/A,False,N/A
-3045 roof corner outside tile 2x2 066R.jpg,84.952,[],N/A,N/A,False,N/A
-3045 roof corner outside tile 2x2 082L.jpg,83.11399999999999,[],N/A,N/A,False,N/A
-3045 roof corner outside tile 2x2 074L.jpg,82.82000000000001,[],N/A,N/A,False,N/A
-3046 roof corner inside tile 2x2 022L.jpg,93.939,[],N/A,N/A,False,N/A
-3046 roof corner inside tile 2x2 010L.jpg,86.013,[],N/A,N/A,False,N/A
-3046 roof corner inside tile 2x2 054L.jpg,96.538,[],N/A,N/A,False,N/A
-3046 roof corner inside tile 2x2 097R.jpg,86.229,[],N/A,N/A,False,N/A
-3046 roof corner inside tile 2x2 099R.jpg,84.946,[],N/A,N/A,False,N/A
-3062 Round Brick 1x1 000L.jpg,101.336,[],N/A,N/A,False,N/A
-3062 Round Brick 1x1 001L.jpg,83.952,[],N/A,N/A,False,N/A
-3062 Round Brick 1x1 008L.jpg,84.987,[],N/A,N/A,False,N/A
-3062 Round Brick 1x1 013R.jpg,84.951,[],N/A,N/A,False,N/A
-3062 Round Brick 1x1 016L.jpg,83.95400000000001,[],N/A,N/A,False,N/A
-3063 Curved Brick 2 Knobs 033L.jpg,124.788,[],N/A,N/A,False,N/A
-3063 Curved Brick 2 Knobs 043R.jpg,84.994,[],N/A,N/A,False,N/A
-3063 Curved Brick 2 Knobs 039L.jpg,85.951,[],N/A,N/A,False,N/A
-3063 Curved Brick 2 Knobs 044L.jpg,82.954,[],N/A,N/A,False,N/A
-3063 Curved Brick 2 Knobs 054R.jpg,83.46199999999999,[],N/A,N/A,False,N/A
-3068 flat tile 2x2 001L.jpg,88.772,[],N/A,N/A,False,N/A
-3068 flat tile 2x2 003L.jpg,83.848,[],N/A,N/A,False,N/A
-3068 flat tile 2x2 004R.jpg,82.94200000000001,[],N/A,N/A,False,N/A
-3068 flat tile 2x2 014L.jpg,83.941,[],N/A,N/A,False,N/A
-3068 flat tile 2x2 011R.jpg,124.473,[],N/A,N/A,False,N/A
-3069 Flat Tile 1x2 001L.jpg,103.631,[],N/A,N/A,False,N/A
-3069 Flat Tile 1x2 004L.jpg,97.316,[],N/A,N/A,False,N/A
-3069 Flat Tile 1x2 011R.jpg,83.96199999999999,[],N/A,N/A,False,N/A
-3069 Flat Tile 1x2 014L.jpg,82.926,[],N/A,N/A,False,N/A
-3069 Flat Tile 1x2 032L.jpg,83.649,[],N/A,N/A,False,N/A
-3070 Flat Tile 1x1 000L.jpg,103.881,[],N/A,N/A,False,N/A
-3070 Flat Tile 1x1 003L.jpg,85.962,[],N/A,N/A,False,N/A
-3070 Flat Tile 1x1 005R.jpg,88.97,[],N/A,N/A,False,N/A
-3070 Flat Tile 1x1 009L.jpg,83.761,[],N/A,N/A,False,N/A
-3070 Flat Tile 1x1 031L.jpg,84.923,[],N/A,N/A,False,N/A
-3298 roof tile 2x3 001L.jpg,106.595,[],N/A,N/A,False,N/A
-3298 roof tile 2x3 003L.jpg,76.96600000000001,[],N/A,N/A,False,N/A
-3298 roof tile 2x3 008L.jpg,76.96799999999999,[],N/A,N/A,False,N/A
-3298 roof tile 2x3 012R.jpg,75.666,[],N/A,N/A,False,N/A
-3298 roof tile 2x3 020L.jpg,89.265,[],N/A,N/A,False,N/A
-3622 brick 1x3 002L.jpg,108.09299999999999,[],N/A,N/A,False,N/A
-3622 brick 1x3 008L.jpg,77.144,[],N/A,N/A,False,N/A
-3622 brick 1x3 013R.jpg,75.972,[],N/A,N/A,False,N/A
-3622 brick 1x3 019L.jpg,74.975,[],N/A,N/A,False,N/A
-3622 brick 1x3 113L.jpg,84.02900000000001,[],N/A,N/A,False,N/A
-3623 Plate 1x3 000L.jpg,120.612,[],N/A,N/A,False,N/A
-3623 Plate 1x3 010L.jpg,77.001,[],N/A,N/A,False,N/A
-3623 Plate 1x3 016L.jpg,76.956,[],N/A,N/A,False,N/A
-3623 Plate 1x3 013R.jpg,78.21000000000001,[],N/A,N/A,False,N/A
-3623 Plate 1x3 298R.jpg,102.89,[],N/A,N/A,False,N/A
-3659 brick bow 1x4 000R.jpg,83.089,[],N/A,N/A,False,N/A
-3659 brick bow 1x4 008R.jpg,76.984,[],N/A,N/A,False,N/A
-3659 brick bow 1x4 023L.jpg,77.958,[],N/A,N/A,False,N/A
-3659 brick bow 1x4 034L.jpg,75.982,[],N/A,N/A,False,N/A
-3659 brick bow 1x4 023R.jpg,78.05499999999999,[],N/A,N/A,False,N/A
-3675 roof tile outside 3x3 005L.jpg,120.642,[],N/A,N/A,False,N/A
-3675 roof tile outside 3x3 007L.jpg,77.734,[],N/A,N/A,False,N/A
-3675 roof tile outside 3x3 018R.jpg,78.976,[],N/A,N/A,False,N/A
-3675 roof tile outside 3x3 024L.jpg,77.962,[],N/A,N/A,False,N/A
-3675 roof tile outside 3x3 023L.jpg,77.966,[],N/A,N/A,False,N/A
-3700 Technic Brick 1x2 000L.jpg,86.08200000000001,[],N/A,N/A,False,N/A
-3700 Technic Brick 1x2 001R.jpg,76.653,[],N/A,N/A,False,N/A
-3700 Technic Brick 1x2 006R.jpg,76.964,[],N/A,N/A,False,N/A
-3700 Technic Brick 1x2 008R.jpg,77.824,[],N/A,N/A,False,N/A
-3700 Technic Brick 1x2 022R.jpg,76.956,[],N/A,N/A,False,N/A
-3794 Plate 1X2 with 1 Knob 000L.jpg,99.94699999999999,[],N/A,N/A,False,N/A
-3794 Plate 1X2 with 1 Knob 003L.jpg,74.958,[],N/A,N/A,False,N/A
-3794 Plate 1X2 with 1 Knob 021L.jpg,76.209,[],N/A,N/A,False,N/A
-3794 Plate 1X2 with 1 Knob 022R.jpg,75.96700000000001,[],N/A,N/A,False,N/A
-3794 Plate 1X2 with 1 Knob 030L.jpg,76.956,[],N/A,N/A,False,N/A
-4150 flat tile round 2x2 000L.jpg,108.859,[],N/A,N/A,False,N/A
-4150 flat tile round 2x2 001L.jpg,78.16199999999999,[],N/A,N/A,False,N/A
-4150 flat tile round 2x2 007L.jpg,75.96300000000001,[],N/A,N/A,False,N/A
-4150 flat tile round 2x2 005R.jpg,74.957,[],N/A,N/A,False,N/A
-4150 flat tile round 2x2 048L.jpg,76.946,[],N/A,N/A,False,N/A
-4274 Connector Peg w Knob 000L.jpg,101.038,[],N/A,N/A,False,N/A
-4274 Connector Peg w Knob 004L.jpg,76.979,[],N/A,N/A,False,N/A
-4274 Connector Peg w Knob 011L.jpg,76.96600000000001,[],N/A,N/A,False,N/A
-4274 Connector Peg w Knob 014L.jpg,77.947,[],N/A,N/A,False,N/A
-4274 Connector Peg w Knob 023R.jpg,76.272,[],N/A,N/A,False,N/A
-4286 roof tile 1x3 000L.jpg,103.978,[],N/A,N/A,False,N/A
-4286 roof tile 1x3 007R.jpg,76.967,[],N/A,N/A,False,N/A
-4286 roof tile 1x3 009L.jpg,77.441,[],N/A,N/A,False,N/A
-4286 roof tile 1x3 028L.jpg,75.935,[],N/A,N/A,False,N/A
-4286 roof tile 1x3 002L.jpg,84.259,[],N/A,N/A,False,N/A
-4490 brick bow 1x3 004R.jpg,96.88,[],N/A,N/A,False,N/A
-4490 brick bow 1x3 007R.jpg,78.97500000000001,[],N/A,N/A,False,N/A
-4490 brick bow 1x3 014L.jpg,78.936,[],N/A,N/A,False,N/A
-4490 brick bow 1x3 010R.jpg,82.31700000000001,[],N/A,N/A,False,N/A
-4490 brick bow 1x3 056R.jpg,91.611,[],N/A,N/A,False,N/A
-6143 Brick D16 w cross 000L.jpg,102.06,[],N/A,N/A,False,N/A
-6143 Brick D16 w cross 003R.jpg,82.637,[],N/A,N/A,False,N/A
-6143 Brick D16 w cross 004L.jpg,77.955,[],N/A,N/A,False,N/A
-6143 Brick D16 w cross 012L.jpg,80.954,[],N/A,N/A,False,N/A
-6143 Brick D16 w cross 017L.jpg,76.957,[],N/A,N/A,False,N/A
-6632 lever 3M 001L.jpg,108.291,[],N/A,N/A,False,N/A
-6632 lever 3M 004R.jpg,83.952,[],N/A,N/A,False,N/A
-6632 lever 3M 016L.jpg,82.943,[],N/A,N/A,False,N/A
-6632 lever 3M 022R.jpg,84.96900000000001,[],N/A,N/A,False,N/A
-6632 lever 3M 071R.jpg,97.625,[],N/A,N/A,False,N/A
-14719 flat tile corner 2x2 000L.jpg,123.182,[],N/A,N/A,False,N/A
-14719 flat tile corner 2x2 001R.jpg,88.948,[],N/A,N/A,False,N/A
-14719 flat tile corner 2x2 010L.jpg,96.956,[],N/A,N/A,False,N/A
-14719 flat tile corner 2x2 017L.jpg,109.77199999999999,[],N/A,N/A,False,N/A
-14719 flat tile corner 2x2 019R.jpg,91.038,[],N/A,N/A,False,N/A
-15672 roof tile 1x2 001L.jpg,129.775,[],N/A,N/A,False,N/A
-15672 roof tile 1x2 002L.jpg,83.19,[],N/A,N/A,False,N/A
-15672 roof tile 1x2 006R.jpg,96.961,[],N/A,N/A,False,N/A
-15672 roof tile 1x2 016R.jpg,83.973,[],N/A,N/A,False,N/A
-15672 roof tile 1x2 037L.jpg,83.455,[],N/A,N/A,False,N/A
-18654 beam 1M 000L.jpg,118.274,[],N/A,N/A,False,N/A
-18654 beam 1M 001L.jpg,84.978,[],N/A,N/A,False,N/A
-18654 beam 1M 004R.jpg,83.951,[],N/A,N/A,False,N/A
-18654 beam 1M 008L.jpg,83.953,[],N/A,N/A,False,N/A
-18654 beam 1M 024L.jpg,84.952,[],N/A,N/A,False,N/A
-27925 flat tile round 2x2 000L.jpg,95.143,[],N/A,N/A,False,N/A
-27925 flat tile round 2x2 004L.jpg,94.436,[],N/A,N/A,False,N/A
-27925 flat tile round 2x2 007L.jpg,84.523,[],N/A,N/A,False,N/A
-27925 flat tile round 2x2 011R.jpg,82.735,[],N/A,N/A,False,N/A
-27925 flat tile round 2x2 037L.jpg,84.56700000000001,[],N/A,N/A,False,N/A
-33909 plate 2 knobs 2x2 005L.jpg,126.811,[],N/A,N/A,False,N/A
-33909 plate 2 knobs 2x2 009R.jpg,84.94,[],N/A,N/A,False,N/A
-33909 plate 2 knobs 2x2 014L.jpg,84.577,[],N/A,N/A,False,N/A
-33909 plate 2 knobs 2x2 042L.jpg,85.038,[],N/A,N/A,False,N/A
-33909 plate 2 knobs 2x2 110L.jpg,102.31800000000001,[],N/A,N/A,False,N/A
-41677 lever 2M 001L.jpg,100.881,[],N/A,N/A,False,N/A
-41677 lever 2M 002L.jpg,82.981,[],N/A,N/A,False,N/A
-41677 lever 2M 004L.jpg,82.952,[],N/A,N/A,False,N/A
-41677 lever 2M 010L.jpg,82.956,[],N/A,N/A,False,N/A
-41677 lever 2M 034R.jpg,84.952,[],N/A,N/A,False,N/A
-41678 Cross Block Fork 2x2 000L.jpg,111.50999999999999,[],N/A,N/A,False,N/A
-41678 Cross Block Fork 2x2 003L.jpg,84.952,[],N/A,N/A,False,N/A
-41678 Cross Block Fork 2x2 006L.jpg,87.948,[],N/A,N/A,False,N/A
-41678 Cross Block Fork 2x2 011L.jpg,83.952,[],N/A,N/A,False,N/A
-41678 Cross Block Fork 2x2 028L.jpg,99.068,[],N/A,N/A,False,N/A
-43093 Bush 2M friction - Cross axle 000L.jpg,104.865,[],N/A,N/A,False,N/A
-43093 Bush 2M friction - Cross axle 001R.jpg,84.952,[],N/A,N/A,False,N/A
-43093 Bush 2M friction - Cross axle 002L.jpg,82.863,[],N/A,N/A,False,N/A
-43093 Bush 2M friction - Cross axle 003R.jpg,85.952,[],N/A,N/A,False,N/A
-43093 Bush 2M friction - Cross axle 020R.jpg,82.83600000000001,[],N/A,N/A,False,N/A
-43857 beam 1x2 002L.jpg,98.023,[],N/A,N/A,False,N/A
-43857 beam 1x2 005L.jpg,92.986,[],N/A,N/A,False,N/A
-43857 beam 1x2 007L.jpg,83.965,[],N/A,N/A,False,N/A
-43857 beam 1x2 012R.jpg,96.97999999999999,[],N/A,N/A,False,N/A
-43857 beam 1x2 061L.jpg,84.956,[],N/A,N/A,False,N/A
-54200 roof tile 1x1 005L.jpg,111.833,[],N/A,N/A,False,N/A
-54200 roof tile 1x1 008R.jpg,84.952,[],N/A,N/A,False,N/A
-54200 roof tile 1x1 013L.jpg,110.977,[],N/A,N/A,False,N/A
-54200 roof tile 1x1 012L.jpg,84.508,[],N/A,N/A,False,N/A
-54200 roof tile 1x1 039L.jpg,81.959,[],N/A,N/A,False,N/A
-85984 roof tile 1x2 001R.jpg,101.605,[],N/A,N/A,False,N/A
-85984 roof tile 1x2 005L.jpg,89.032,[],N/A,N/A,False,N/A
-85984 roof tile 1x2 011L.jpg,78.84299999999999,[],N/A,N/A,False,N/A
-85984 roof tile 1x2 014L.jpg,90.954,[],N/A,N/A,False,N/A
-85984 roof tile 1x2 024R.jpg,76.99000000000001,[],N/A,N/A,False,N/A
-99301 roof tile inside 3x3 001L.jpg,90.299,[],N/A,N/A,False,N/A
-99301 roof tile inside 3x3 004R.jpg,85.059,[],N/A,N/A,False,N/A
-99301 roof tile inside 3x3 005L.jpg,80.997,[],N/A,N/A,False,N/A
-99301 roof tile inside 3x3 022R.jpg,86.94200000000001,[],N/A,N/A,False,N/A
-99301 roof tile inside 3x3 064R.jpg,87.85600000000001,[],N/A,N/A,False,N/A
+2357 brick corner 1x2x2 011R.jpg,3248.636,[],N/A,N/A,False,N/A
+2357 brick corner 1x2x2 012R.jpg,67.951,[],N/A,N/A,False,N/A
+2357 brick corner 1x2x2 014L.jpg,67.961,[],N/A,N/A,False,N/A
+2357 brick corner 1x2x2 021L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+2357 brick corner 1x2x2 023R.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+2420 plate corner 2x2 004R.jpg,67.978,[],N/A,N/A,False,N/A
+2420 plate corner 2x2 015L.jpg,66.978,[],N/A,N/A,False,N/A
+2420 plate corner 2x2 031L.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+2420 plate corner 2x2 033R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+2420 plate corner 2x2 047R.jpg,68.515,[],N/A,N/A,False,N/A
+2780 Peg with friction 001L.jpg,67.38900000000001,[],N/A,N/A,False,N/A
+2780 Peg with friction 015L.jpg,65.963,[],N/A,N/A,False,N/A
+2780 Peg with friction 020L.jpg,67.961,[],N/A,N/A,False,N/A
+2780 Peg with friction 034L.jpg,66.97200000000001,[],N/A,N/A,False,N/A
+2780 Peg with friction 045L.jpg,66.971,[],N/A,N/A,False,N/A
+3001 brick 2x4 006R.jpg,67.959,[],N/A,N/A,False,N/A
+3001 brick 2x4 012R.jpg,67.944,[],N/A,N/A,False,N/A
+3001 brick 2x4 018R.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+3001 brick 2x4 043L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3001 brick 2x4 048R.jpg,68.961,[],N/A,N/A,False,N/A
+3002 brick 2x3 004L.jpg,65.979,[],N/A,N/A,False,N/A
+3002 brick 2x3 008R.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+3002 brick 2x3 038R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3002 brick 2x3 039R.jpg,67.97200000000001,[],N/A,N/A,False,N/A
+3002 brick 2x3 058R.jpg,67.48700000000001,[],N/A,N/A,False,N/A
+3003 brick 2x2 004R.jpg,67.767,[],N/A,N/A,False,N/A
+3003 brick 2x2 008R.jpg,67.944,[],N/A,N/A,False,N/A
+3003 brick 2x2 012L.jpg,66.963,[],N/A,N/A,False,N/A
+3003 brick 2x2 022L.jpg,68.643,[],N/A,N/A,False,N/A
+3003 brick 2x2 024R.jpg,66.952,[],N/A,N/A,False,N/A
+3004 brick 1x2 002R.jpg,68.59800000000001,[],N/A,N/A,False,N/A
+3004 brick 1x2 011L.jpg,67.961,[],N/A,N/A,False,N/A
+3004 brick 1x2 015L.jpg,66.95700000000001,[],N/A,N/A,False,N/A
+3004 brick 1x2 022R.jpg,68.326,[],N/A,N/A,False,N/A
+3004 brick 1x2 028L.jpg,68.944,[],N/A,N/A,False,N/A
+3005 brick 1x1 000L.jpg,67.978,[],N/A,N/A,False,N/A
+3005 brick 1x1 012L.jpg,68.944,[],N/A,N/A,False,N/A
+3005 brick 1x1 015R.jpg,67.978,[],N/A,N/A,False,N/A
+3005 brick 1x1 017L.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+3005 brick 1x1 030L.jpg,65.979,[],N/A,N/A,False,N/A
+3010 brick 1x4 010R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3010 brick 1x4 011L.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+3010 brick 1x4 015L.jpg,66.978,[],N/A,N/A,False,N/A
+3010 brick 1x4 021L.jpg,68.944,[],N/A,N/A,False,N/A
+3010 brick 1x4 044L.jpg,67.978,[],N/A,N/A,False,N/A
+3020 plate 2x4 009L.jpg,67.675,[],N/A,N/A,False,N/A
+3020 plate 2x4 024R.jpg,66.979,[],N/A,N/A,False,N/A
+3020 plate 2x4 029L.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+3020 plate 2x4 033R.jpg,67.96199999999999,[],N/A,N/A,False,N/A
+3020 plate 2x4 034L.jpg,69.96,[],N/A,N/A,False,N/A
+3021 plate 2x3 009R.jpg,67.944,[],N/A,N/A,False,N/A
+3021 plate 2x3 011L.jpg,67.79899999999999,[],N/A,N/A,False,N/A
+3021 plate 2x3 020R.jpg,67.951,[],N/A,N/A,False,N/A
+3021 plate 2x3 019L.jpg,67.961,[],N/A,N/A,False,N/A
+3021 plate 2x3 025L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3022 Plate 2x2 000R.jpg,65.962,[],N/A,N/A,False,N/A
+3022 Plate 2x2 009L.jpg,68.961,[],N/A,N/A,False,N/A
+3022 Plate 2x2 022R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3022 Plate 2x2 024L.jpg,65.963,[],N/A,N/A,False,N/A
+3022 Plate 2x2 035R.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+3023 Plate 1x2 017L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3023 Plate 1x2 020R.jpg,67.591,[],N/A,N/A,False,N/A
+3023 Plate 1x2 036L.jpg,67.94699999999999,[],N/A,N/A,False,N/A
+3023 Plate 1x2 037R.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+3023 Plate 1x2 050L.jpg,67.983,[],N/A,N/A,False,N/A
+3024 plate 1x1 001L.jpg,66.958,[],N/A,N/A,False,N/A
+3024 plate 1x1 003R.jpg,66.944,[],N/A,N/A,False,N/A
+3024 plate 1x1 010L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+3024 plate 1x1 018R.jpg,67.96900000000001,[],N/A,N/A,False,N/A
+3024 plate 1x1 020R.jpg,66.954,[],N/A,N/A,False,N/A
+3037 roof tile 1x4 004L.jpg,69.961,[],N/A,N/A,False,N/A
+3037 roof tile 1x4 007L.jpg,67.97699999999999,[],N/A,N/A,False,N/A
+3037 roof tile 1x4 011L.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+3037 roof tile 1x4 026L.jpg,67.96199999999999,[],N/A,N/A,False,N/A
+3037 roof tile 1x4 039R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3038 roof tile 2x3 003L.jpg,65.946,[],N/A,N/A,False,N/A
+3038 roof tile 2x3 011R.jpg,66.97200000000001,[],N/A,N/A,False,N/A
+3038 roof tile 2x3 013R.jpg,68.951,[],N/A,N/A,False,N/A
+3038 roof tile 2x3 018L.jpg,67.978,[],N/A,N/A,False,N/A
+3038 roof tile 2x3 050L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+3039 roof tile 2x2 007L.jpg,67.96199999999999,[],N/A,N/A,False,N/A
+3039 roof tile 2x2 018R.jpg,65.962,[],N/A,N/A,False,N/A
+3039 roof tile 2x2 030R.jpg,66.94600000000001,[],N/A,N/A,False,N/A
+3039 roof tile 2x2 040R.jpg,67.97699999999999,[],N/A,N/A,False,N/A
+3039 roof tile 2x2 068R.jpg,66.955,[],N/A,N/A,False,N/A
+3040 roof tile 1x2 012R.jpg,67.951,[],N/A,N/A,False,N/A
+3040 roof tile 1x2 013L.jpg,67.97699999999999,[],N/A,N/A,False,N/A
+3040 roof tile 1x2 027L.jpg,67.927,[],N/A,N/A,False,N/A
+3040 roof tile 1x2 031L.jpg,66.956,[],N/A,N/A,False,N/A
+3040 roof tile 1x2 038L.jpg,66.969,[],N/A,N/A,False,N/A
+3045 roof corner outside tile 2x2 002L.jpg,67.89,[],N/A,N/A,False,N/A
+3045 roof corner outside tile 2x2 052R.jpg,67.978,[],N/A,N/A,False,N/A
+3045 roof corner outside tile 2x2 083R.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+3045 roof corner outside tile 2x2 090L.jpg,67.961,[],N/A,N/A,False,N/A
+3045 roof corner outside tile 2x2 095L.jpg,66.979,[],N/A,N/A,False,N/A
+3046 roof corner inside tile 2x2 006L.jpg,66.951,[],N/A,N/A,False,N/A
+3046 roof corner inside tile 2x2 023R.jpg,66.97200000000001,[],N/A,N/A,False,N/A
+3046 roof corner inside tile 2x2 044R.jpg,67.95,[],N/A,N/A,False,N/A
+3046 roof corner inside tile 2x2 088L.jpg,67.96199999999999,[],N/A,N/A,False,N/A
+3046 roof corner inside tile 2x2 102R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3062 Round Brick 1x1 000L.jpg,66.158,[],N/A,N/A,False,N/A
+3062 Round Brick 1x1 001L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3062 Round Brick 1x1 008L.jpg,67.961,[],N/A,N/A,False,N/A
+3062 Round Brick 1x1 012R.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+3062 Round Brick 1x1 016L.jpg,67.97699999999999,[],N/A,N/A,False,N/A
+3063 Curved Brick 2 Knobs 011R.jpg,67.961,[],N/A,N/A,False,N/A
+3063 Curved Brick 2 Knobs 015L.jpg,67.96199999999999,[],N/A,N/A,False,N/A
+3063 Curved Brick 2 Knobs 018L.jpg,67.944,[],N/A,N/A,False,N/A
+3063 Curved Brick 2 Knobs 026L.jpg,67.96199999999999,[],N/A,N/A,False,N/A
+3063 Curved Brick 2 Knobs 030R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3068 flat tile 2x2 002R.jpg,67.233,[],N/A,N/A,False,N/A
+3068 flat tile 2x2 010R.jpg,66.965,[],N/A,N/A,False,N/A
+3068 flat tile 2x2 019L.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+3068 flat tile 2x2 026R.jpg,67.8,[],N/A,N/A,False,N/A
+3068 flat tile 2x2 035L.jpg,67.961,[],N/A,N/A,False,N/A
+3069 Flat Tile 1x2 005L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3069 Flat Tile 1x2 011R.jpg,67.961,[],N/A,N/A,False,N/A
+3069 Flat Tile 1x2 012L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+3069 Flat Tile 1x2 014L.jpg,66.973,[],N/A,N/A,False,N/A
+3069 Flat Tile 1x2 033L.jpg,66.952,[],N/A,N/A,False,N/A
+3070 Flat Tile 1x1 005R.jpg,66.97200000000001,[],N/A,N/A,False,N/A
+3070 Flat Tile 1x1 009L.jpg,67.967,[],N/A,N/A,False,N/A
+3070 Flat Tile 1x1 012L.jpg,68.40599999999999,[],N/A,N/A,False,N/A
+3070 Flat Tile 1x1 017L.jpg,68.943,[],N/A,N/A,False,N/A
+3070 Flat Tile 1x1 039L.jpg,65.979,[],N/A,N/A,False,N/A
+3298 roof tile 2x3 008L.jpg,67.94500000000001,[],N/A,N/A,False,N/A
+3298 roof tile 2x3 010R.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+3298 roof tile 2x3 012R.jpg,67.978,[],N/A,N/A,False,N/A
+3298 roof tile 2x3 019R.jpg,66.98400000000001,[],N/A,N/A,False,N/A
+3298 roof tile 2x3 030R.jpg,66.923,[],N/A,N/A,False,N/A
+3622 brick 1x3 002L.jpg,67.961,[],N/A,N/A,False,N/A
+3622 brick 1x3 010L.jpg,67.978,[],N/A,N/A,False,N/A
+3622 brick 1x3 011R.jpg,66.963,[],N/A,N/A,False,N/A
+3622 brick 1x3 015R.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+3622 brick 1x3 021R.jpg,67.961,[],N/A,N/A,False,N/A
+3623 Plate 1x3 000L.jpg,67.57000000000001,[],N/A,N/A,False,N/A
+3623 Plate 1x3 009R.jpg,67.952,[],N/A,N/A,False,N/A
+3623 Plate 1x3 019L.jpg,65.953,[],N/A,N/A,False,N/A
+3623 Plate 1x3 024R.jpg,66.979,[],N/A,N/A,False,N/A
+3623 Plate 1x3 027R.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+3659 brick bow 1x4 002R.jpg,66.365,[],N/A,N/A,False,N/A
+3659 brick bow 1x4 006R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3659 brick bow 1x4 023L.jpg,67.39,[],N/A,N/A,False,N/A
+3659 brick bow 1x4 038L.jpg,67.961,[],N/A,N/A,False,N/A
+3659 brick bow 1x4 040R.jpg,67.961,[],N/A,N/A,False,N/A
+3675 roof tile outside 3x3 015R.jpg,67.96199999999999,[],N/A,N/A,False,N/A
+3675 roof tile outside 3x3 016L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3675 roof tile outside 3x3 034R.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+3675 roof tile outside 3x3 049R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3675 roof tile outside 3x3 056R.jpg,67.97200000000001,[],N/A,N/A,False,N/A
+3700 Technic Brick 1x2 005R.jpg,67.949,[],N/A,N/A,False,N/A
+3700 Technic Brick 1x2 008R.jpg,66.979,[],N/A,N/A,False,N/A
+3700 Technic Brick 1x2 022L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+3700 Technic Brick 1x2 033R.jpg,66.979,[],N/A,N/A,False,N/A
+3700 Technic Brick 1x2 034R.jpg,66.751,[],N/A,N/A,False,N/A
+3794 Plate 1X2 with 1 Knob 034L.jpg,68.27600000000001,[],N/A,N/A,False,N/A
+3794 Plate 1X2 with 1 Knob 053R.jpg,67.961,[],N/A,N/A,False,N/A
+3794 Plate 1X2 with 1 Knob 055R.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+3794 Plate 1X2 with 1 Knob 073R.jpg,67.82000000000001,[],N/A,N/A,False,N/A
+3794 Plate 1X2 with 1 Knob 087L.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+4150 flat tile round 2x2 000R.jpg,67.978,[],N/A,N/A,False,N/A
+4150 flat tile round 2x2 006L.jpg,66.955,[],N/A,N/A,False,N/A
+4150 flat tile round 2x2 006R.jpg,68.133,[],N/A,N/A,False,N/A
+4150 flat tile round 2x2 013R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+4150 flat tile round 2x2 038L.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+4274 Connector Peg w Knob 006R.jpg,67.97200000000001,[],N/A,N/A,False,N/A
+4274 Connector Peg w Knob 009R.jpg,68.188,[],N/A,N/A,False,N/A
+4274 Connector Peg w Knob 011L.jpg,65.96499999999999,[],N/A,N/A,False,N/A
+4274 Connector Peg w Knob 015L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+4274 Connector Peg w Knob 017R.jpg,67.819,[],N/A,N/A,False,N/A
+4286 roof tile 1x3 000L.jpg,67.314,[],N/A,N/A,False,N/A
+4286 roof tile 1x3 007L.jpg,67.954,[],N/A,N/A,False,N/A
+4286 roof tile 1x3 008R.jpg,67.244,[],N/A,N/A,False,N/A
+4286 roof tile 1x3 031R.jpg,67.944,[],N/A,N/A,False,N/A
+4286 roof tile 1x3 040L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+4490 brick bow 1x3 005R.jpg,65.962,[],N/A,N/A,False,N/A
+4490 brick bow 1x3 014L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+4490 brick bow 1x3 015L.jpg,67.596,[],N/A,N/A,False,N/A
+4490 brick bow 1x3 027L.jpg,68.97699999999999,[],N/A,N/A,False,N/A
+4490 brick bow 1x3 051L.jpg,67.944,[],N/A,N/A,False,N/A
+6143 Brick D16 w cross 001R.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+6143 Brick D16 w cross 002L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+6143 Brick D16 w cross 006L.jpg,65.963,[],N/A,N/A,False,N/A
+6143 Brick D16 w cross 012R.jpg,67.994,[],N/A,N/A,False,N/A
+6143 Brick D16 w cross 015R.jpg,66.929,[],N/A,N/A,False,N/A
+6632 lever 3M 002L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+6632 lever 3M 018R.jpg,67.746,[],N/A,N/A,False,N/A
+6632 lever 3M 022R.jpg,65.946,[],N/A,N/A,False,N/A
+6632 lever 3M 027R.jpg,66.96000000000001,[],N/A,N/A,False,N/A
+6632 lever 3M 078R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+14719 flat tile corner 2x2 010L.jpg,67.954,[],N/A,N/A,False,N/A
+14719 flat tile corner 2x2 014R.jpg,67.968,[],N/A,N/A,False,N/A
+14719 flat tile corner 2x2 016L.jpg,67.944,[],N/A,N/A,False,N/A
+14719 flat tile corner 2x2 023R.jpg,68.966,[],N/A,N/A,False,N/A
+14719 flat tile corner 2x2 031L.jpg,66.95700000000001,[],N/A,N/A,False,N/A
+15672 roof tile 1x2 016R.jpg,68.97699999999999,[],N/A,N/A,False,N/A
+15672 roof tile 1x2 017R.jpg,67.80600000000001,[],N/A,N/A,False,N/A
+15672 roof tile 1x2 039R.jpg,68.95,[],N/A,N/A,False,N/A
+15672 roof tile 1x2 047L.jpg,65.973,[],N/A,N/A,False,N/A
+15672 roof tile 1x2 056L.jpg,66.583,[],N/A,N/A,False,N/A
+18654 beam 1M 004L.jpg,68.34,[],N/A,N/A,False,N/A
+18654 beam 1M 010L.jpg,66.944,[],N/A,N/A,False,N/A
+18654 beam 1M 014R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+18654 beam 1M 025L.jpg,68.982,[],N/A,N/A,False,N/A
+18654 beam 1M 035L.jpg,67.94,[],N/A,N/A,False,N/A
+27925 flat tile round 2x2 022L.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+27925 flat tile round 2x2 023R.jpg,66.839,[],N/A,N/A,False,N/A
+27925 flat tile round 2x2 029L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+27925 flat tile round 2x2 029R.jpg,68.16600000000001,[],N/A,N/A,False,N/A
+27925 flat tile round 2x2 034L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+33909 plate 2 knobs 2x2 012L.jpg,67.68,[],N/A,N/A,False,N/A
+33909 plate 2 knobs 2x2 018R.jpg,67.961,[],N/A,N/A,False,N/A
+33909 plate 2 knobs 2x2 021L.jpg,68.97699999999999,[],N/A,N/A,False,N/A
+33909 plate 2 knobs 2x2 036R.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+33909 plate 2 knobs 2x2 051L.jpg,67.949,[],N/A,N/A,False,N/A
+41677 lever 2M 002L.jpg,67.95700000000001,[],N/A,N/A,False,N/A
+41677 lever 2M 011L.jpg,67.961,[],N/A,N/A,False,N/A
+41677 lever 2M 018R.jpg,67.65,[],N/A,N/A,False,N/A
+41677 lever 2M 022R.jpg,67.967,[],N/A,N/A,False,N/A
+41677 lever 2M 031R.jpg,66.963,[],N/A,N/A,False,N/A
+41678 Cross Block Fork 2x2 000R.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+41678 Cross Block Fork 2x2 003L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+41678 Cross Block Fork 2x2 006R.jpg,67.979,[],N/A,N/A,False,N/A
+41678 Cross Block Fork 2x2 022L.jpg,67.943,[],N/A,N/A,False,N/A
+41678 Cross Block Fork 2x2 032R.jpg,67.966,[],N/A,N/A,False,N/A
+43093 Bush 2M friction - Cross axle 000L.jpg,66.973,[],N/A,N/A,False,N/A
+43093 Bush 2M friction - Cross axle 001L.jpg,66.96100000000001,[],N/A,N/A,False,N/A
+43093 Bush 2M friction - Cross axle 005R.jpg,67.953,[],N/A,N/A,False,N/A
+43093 Bush 2M friction - Cross axle 011R.jpg,67.953,[],N/A,N/A,False,N/A
+43093 Bush 2M friction - Cross axle 015R.jpg,67.978,[],N/A,N/A,False,N/A
+43857 beam 1x2 005R.jpg,66.94500000000001,[],N/A,N/A,False,N/A
+43857 beam 1x2 009L.jpg,65.962,[],N/A,N/A,False,N/A
+43857 beam 1x2 012R.jpg,67.08600000000001,[],N/A,N/A,False,N/A
+43857 beam 1x2 016R.jpg,68.643,[],N/A,N/A,False,N/A
+43857 beam 1x2 062L.jpg,66.979,[],N/A,N/A,False,N/A
+54200 roof tile 1x1 010R.jpg,68.944,[],N/A,N/A,False,N/A
+54200 roof tile 1x1 016R.jpg,67.267,[],N/A,N/A,False,N/A
+54200 roof tile 1x1 034L.jpg,66.963,[],N/A,N/A,False,N/A
+54200 roof tile 1x1 037L.jpg,67.96000000000001,[],N/A,N/A,False,N/A
+54200 roof tile 1x1 055R.jpg,66.955,[],N/A,N/A,False,N/A
+85984 roof tile 1x2 001R.jpg,67.952,[],N/A,N/A,False,N/A
+85984 roof tile 1x2 010L.jpg,66.973,[],N/A,N/A,False,N/A
+85984 roof tile 1x2 013L.jpg,66.96000000000001,[],N/A,N/A,False,N/A
+85984 roof tile 1x2 060L.jpg,66.963,[],N/A,N/A,False,N/A
+85984 roof tile 1x2 102L.jpg,66.96000000000001,[],N/A,N/A,False,N/A
+99301 roof tile inside 3x3 028L.jpg,69.005,[],N/A,N/A,False,N/A
+99301 roof tile inside 3x3 031L.jpg,66.96199999999999,[],N/A,N/A,False,N/A
+99301 roof tile inside 3x3 041R.jpg,67.963,[],N/A,N/A,False,N/A
+99301 roof tile inside 3x3 049R.jpg,67.967,[],N/A,N/A,False,N/A
+99301 roof tile inside 3x3 068R.jpg,68.944,[],N/A,N/A,False,N/A

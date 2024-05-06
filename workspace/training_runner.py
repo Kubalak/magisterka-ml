@@ -131,6 +131,8 @@ def train_model(modelname, turn_off, evaluate):
                 training_killed = True
             elif line.find("RESOURCE_EXHAUSTED: Out of memory") != -1 or line.find("UnicodeDecodeError:") != -1 or line.find("RESOURCE_EXHAUSTED: failed to allocate memory") != -1:
                 training_failed = True
+                logfile.write("Killing learning process that produced error...\n".encode('utf-8'))
+                subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
             
     errors.close()
     

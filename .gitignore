@@ -199,3 +199,5 @@ yolov8*.pt
 
 # Yolo runs
 /yolo/runs/detect/*
+
+documents_local/
