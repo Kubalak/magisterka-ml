@@ -1,14 +1,16 @@
 import os
 import cv2
 import ast
-import matplotlib.axes
 import pandas as pd
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-from argparse import ArgumentParser
+import matplotlib.axes
 from .metrics import IoU
+import matplotlib.pyplot as plt
+from alive_progress import alive_bar
+from argparse import ArgumentParser
+import matplotlib.patches as patches
+from typing import List
 
-def box_drawer(image, classname, boxes, ax:matplotlib.axes.Axes):
+def box_drawer(image:str|bytes, classname:str, boxes:List[int], ax:matplotlib.axes.Axes):
     """Draws a detection on image provided.
 
     Args:
@@ -38,7 +40,17 @@ def box_drawer(image, classname, boxes, ax:matplotlib.axes.Axes):
             ax.add_patch(rect)
             ax.text(box[0], box[1] - 2, box[-2], verticalalignment='bottom', bbox=dict(facecolor=color, alpha=0.5, boxstyle="square,pad=0.2"), color='w')
 
-def draw_intersection(image, gtbox, pbox, ax:matplotlib.axes.Axes):
+
+def draw_intersection(image:str|bytes, gtbox:List[int], pbox:List[int], ax:matplotlib.axes.Axes, det_iou:tuple=None):
+    """Draws an intersection of real bounding box and predicted bounding box on image and puts it onto axis.
+
+    Args:
+        image (str|bytes): Path to image or bytes containing image content.
+        gtbox (list): Ground truth bounding box. Requires format [xmin, ymin, xmax, ymax]
+        pbox (list): Predicted bounding box. Accepts box returned by UniversalDetector object.
+        ax (matplotlib.axes.Axes): Axes on which image with detection and intersection will be drawn.
+        det_iout (tuple)=None: Detected IoU (returned by IoU function). If not `None` it's used to draw intersection.
+    """
     if type(image) is bytes:
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
     else:
@@ -57,17 +69,19 @@ def draw_intersection(image, gtbox, pbox, ax:matplotlib.axes.Axes):
     
     p = patches.Rectangle((pbox[0], pbox[1]), wp, hp, edgecolor='m', facecolor='none', linewidth=1)
     ax.add_patch(p)
-    
-    ibox, iou = IoU(gtbox, pbox)
+    ibox, iou = None, None
+    if det_iou is not None:
+        ibox, iou = det_iou
+    else:
+        ibox, iou = IoU(gtbox, pbox)
     if iou > 0:
         wi = ibox[2] - ibox[0]
         hi = ibox[3] - ibox[1]
         inter = patches.Rectangle((ibox[0], ibox[1]), wi, hi, facecolor='c', alpha=0.2)
         ax.add_patch(inter)
     
-    ax.text(gtbox[0] + wgt / 2, gtbox[3], f"IoU: {iou:.2f}", horizontalalignment='center', verticalalignement='top', color='w')
-    
-    
+    ax.text(gtbox[0] + wgt / 2, gtbox[3], f"IoU: {iou:.2f}", horizontalalignment='center', verticalalignment='bottom', color='w')
+ 
 
 def generate_bars(modelpath:str, df:pd.DataFrame=None, close=False):
     results = None
@@ -84,7 +98,8 @@ def generate_bars(modelpath:str, df:pd.DataFrame=None, close=False):
     grouped = results.groupby("original_class", as_index=False).agg(agg_dict)
 
     figure = plt.figure(figsize=(12,24))
-    plt.title(f"{modelpath} - Liczba detekcji dla klasy")
+    modelname = modelpath.split('/')[-1].split('\\')[-1]
+    plt.title(f"{modelname} - Liczba detekcji dla klasy")
     bar1 = plt.barh(grouped['original_class'], grouped['class_present'],  label="Oryginalna klasa na liście wykrytych klas")
     bar2 = plt.barh(grouped['original_class'], grouped['class_is_best'], label="Oryginalna klasa ma najwyższy wynik")
     plt.legend(handles=[bar1,bar2])
@@ -93,7 +108,26 @@ def generate_bars(modelpath:str, df:pd.DataFrame=None, close=False):
     plt.savefig(os.path.join(modelpath, "figure.png"), pad_inches=0.1, dpi=300, bbox_inches='tight')
     if close:
         plt.close(figure)
-        
+
+
+def create_detections_grid(modelpath:str, datafile:str):
+    df = pd.read_csv(os.path.join(modelpath, datafile))
+    df["boxes"] = [*map(ast.literal_eval, df.boxes.to_list())]
+    df["original_class"] = df["image"].apply(lambda z: z[:-9])
+    df["class_is_best"] = df["best_class"] == df["original_class"]
+    
+    with alive_bar(df['best_class'].count()) as bar:
+        for a in range(10):
+            f, ax = plt.subplots(5, 5, figsize=(15,15))
+            for i in range(5):
+                for j in range(5):
+                    row = df.loc[a * 25 + i * 5 + j]
+                    box_drawer(os.path.join("bricks", row["image"][:-9], row["image"]), row["image"][:-9], row["boxes"], ax[i, j])
+                    bar()   
+            plt.savefig(os.path.join(modelpath,f"detections_{a}.png"), bbox_inches='tight', pad_inches=0)
+            plt.close(f)
+
+
 if __name__ == "__main__":
     parser = ArgumentParser()
     
@@ -101,22 +135,6 @@ if __name__ == "__main__":
     parser.add_argument("--datafile", "-df", help="Data file name", type=str, default="validation_results.csv")
     namespace = parser.parse_args()
     
-    
-    df = pd.read_csv(os.path.join(namespace.modeldir, namespace.datafile))
-    df["boxes"] = [*map(ast.literal_eval, df.boxes.to_list())]
-    df["original_class"] = df["image"].apply(lambda z: z[:-9])
-    df["class_is_best"] = df["best_class"] == df["original_class"]
-    
-    for a in range(10):
-        f, ax = plt.subplots(5, 5, figsize=(15,15))
-        for i in range(5):
-            for j in range(5):
-                row = df.loc[a * 25 + i * 5 + j]
-                box_drawer(os.path.join("bricks", row["image"][:-9], row["image"]), row["image"][:-9], row["boxes"], ax[i, j])   
-        plt.savefig(os.path.join(namespace.modeldir,f"detections_{a}.png"), bbox_inches='tight', pad_inches=0)
-        plt.close()
-        print(f"{(a+1):2d}/10", end="\r")
-    
-    print()
+    create_detections_grid(namespace.modeldir, namespace.datafile)
     
     print("Images written to", namespace.modeldir)

@@ -1,7 +1,6 @@
 import argparse
 import pandas as pd
 import tensorflow as tf
-from datetime import datetime
 from alive_progress import alive_bar
 from detection_utils.universal_detection_api import UniversalObjectDetector
 from detection_utils.detections_drawer import generate_bars
@@ -21,11 +20,9 @@ def evaluate_detection(image_path, detector:UniversalObjectDetector, threshold:f
     """
     # boxes = [[145, 172, 495, 461, '6632 lever 3M', 0.2697998285293579]]
     # classes = ['6632 lever 3M']
-    start = datetime.now()
     detections = detector.detect_objects(image_path, threshold)#detection(image_path, width, height, model_fn, threshold, category_index)
     boxes = detections['boxes']
     classes = [*map(lambda z: z[-2], boxes)]
-    stop = datetime.now()
     class_present = actual_class in classes
 
     class_score = "N/A"
@@ -43,7 +40,7 @@ def evaluate_detection(image_path, detector:UniversalObjectDetector, threshold:f
 
     return {
         'image': image_path.split("/")[-1],
-        'time': (stop-start).total_seconds() * 1000,
+        'time': detections['time'],
         'boxes': boxes,
         'best': best_box,
         'best_class': best_class,

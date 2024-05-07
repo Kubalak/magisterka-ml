@@ -5,11 +5,27 @@ import time
 from alive_progress import alive_bar
 
 def prepare(filename):
+    """Loads the filename and prepares True/False matrix representing pixels.
+
+    Args:
+        filename (str): Path to image.
+
+    Returns:
+        tuple(MatLike,list[list[bool]]): Two elements tuple with loaded image and `True`/`False` matrix.
+    """
     img = cv2.imread(filename,0)
     height,width = img.shape
     return (img, [[img.item(j,i) != 0 for j in range(height)] for i in range(width)])
 
 def get_bounds(pixels):
+    """Creates a bounding box for passed matrix.
+
+    Args:
+        pixels (list[list[bool]]): Matrix representing pixels.
+
+    Returns:
+        dict[str,int]: Dict containing `xmin`, `ymin`, `xmax` and `ymax` points of bounding box.
+    """
     width = len(pixels)
     height = len(pixels[0])
     annotations = {
@@ -40,13 +56,23 @@ def get_bounds(pixels):
     return annotations
 
 def annotate(filename:str, class_name, class_id):
-    pixels = prepare(filename)
+    """Annotates given filename.
+
+    Args:
+        filename (str): Path to file
+        class_name (str): Name of the class.
+        class_id (int): Class id starting from 1.
+
+    Returns:
+        tuple: Two element tuple with image and annotation.
+    """
+    image, pixels = prepare(filename)
     width = len(pixels)
     height = len(pixels[0])
     info = get_bounds(pixels)
     splitted_name = filename.split('.')[:-1]
     filename = '.'.join([*splitted_name, 'jpg'])
-    return {
+    return (image, {
         'height': height,
         'width': width,
         'filename': filename.split('/')[-1],
@@ -55,16 +81,20 @@ def annotate(filename:str, class_name, class_id):
         'bbox': info,
         'class/text': class_name,
         'class/label': class_id,
-    }
+    })
 
 def mark(directories):
+    """Creates annotation for directories and converts images to JPG.
+
+    Args:
+        directories (list[str]): List of directories containing images.
+    """
     files = {}
     meta = []
     index = 0
     with alive_bar(len(directories)) as bar:
         for directory in directories:
             files[directory] = [*filter(lambda z: z.endswith('.jpg'), os.listdir(os.path.join('bricks', directory)))]
-            print(directory, end=" "*64+"\r")
             # expr = re.compile("^\\d+")
             # class_id = int(expr.search(dirname).group(0))
             index+=1

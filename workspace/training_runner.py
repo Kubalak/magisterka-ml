@@ -13,10 +13,12 @@ from multiprocessing import Process
 from eval_runner import run_evaluation
 from detection_utils.tensor.model_download_utils import download_archive, untar_archive
 
+
 SCRIPT_NAME = "model_main_tf2.py"
 
 process = None
 root = tk.Tk()
+
 
 def human_readable(size:int):
     index = 0
@@ -25,6 +27,7 @@ def human_readable(size:int):
         size /= 1024
         index += 1
     return (size, sizes[index])
+
 
 def get_system_info():
     uname = platform.uname()
@@ -74,6 +77,7 @@ def start_training(modelname, turn_off, evaluate):
     process = Process(target=train_model, args=(modelname,turn_off, evaluate))
     process.start()
     root.destroy()
+    
     
 def train_model(modelname, turn_off, evaluate):
     """Executes and controls training process. 
@@ -167,6 +171,7 @@ def train_model(modelname, turn_off, evaluate):
         root.mainloop()
         if timer.get() == 0:
             os.system("shutdown /s /t 1")
+
         
 def is_model_empty(modelname):
     """Tells whether model dir passed via `modelname` is empty (contains only `pipeline.config` file)."""
