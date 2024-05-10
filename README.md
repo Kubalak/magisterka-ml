@@ -1,10 +1,49 @@
-# Index
+# Testing usage of object detection to detect LEGO brick on images
 
-- LEGO dataset link [https://www.kaggle.com/datasets/joosthazelzet/lego-brick-images](https://www.kaggle.com/datasets/joosthazelzet/lego-brick-images)
-Post [https://neptune.ai/blog/how-to-train-your-own-object-detector-using-tensorflow-object-detection-api](https://neptune.ai/blog/how-to-train-your-own-object-detector-using-tensorflow-object-detection-api)
+## Useful links
 
-- SSD resnet [http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet101_v1_fpn_640x640_coco17_tpu-8.tar.gz](http://download.tensorflow.org/models/object_detection/tf2/20200711/ssd_resnet101_v1_fpn_640x640_coco17_tpu-8.tar.gz)
+- [LEGO dataset](https://www.kaggle.com/datasets/joosthazelzet/lego-brick-images)
+- [Neptune AI Post](https://neptune.ai/blog/how-to-train-your-own-object-detector-using-tensorflow-object-detection-api)
+- [Ultralytics](https://www.ultralytics.com/)
 
-- Efficient net [http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz](http://download.tensorflow.org/models/object_detection/tf2/20200711/efficientdet_d0_coco17_tpu-32.tar.gz)
-- Tensorflow model Zoo [https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md](https://github.com/tensorflow/models/blob/master/research/object_detection/g3doc/tf2_detection_zoo.md)
-- GD folder [link](https://drive.google.com/drive/folders/1NkJuDFVj8WCHY6ZayX4VAik9K7zqCIE4?usp=sharing)
+### Reqirements
+
+- Python 3.9+
+- TensorFlow 2.10(+? tested on 2.10)
+- PyTorch 2.2.2
+- Ultralytics 8.2.2
+- [Protoc](https://github.com/protocolbuffers/protobuf/releases) to build object-detection source
+- Pandas 
+- Pillow 9.4 (doesn't work with 10+)
+- PyYAML 5.4.1 (install with conda pip package is broken)
+- OpenCV-python
+- Matplotlib
+- Shapely
+- Protobuf 3.20.3 (doesn't work with other versions)
+- CUDA capable GPU to speed up calculations
+
+### Installation
+
+First clone the repo to local folder.
+
+`git clone https://github.com/Kubalak/magisterka-ml.git`
+
+Then move into the cloned repo.
+
+`cd magisterka-ml`
+
+Next step is to clone TensorFlow object-detection utils.
+
+`git clone https://github.com/tensorflow/models.git`
+
+Then cd into dir and build protoc to python code.
+
+`cd models`
+`do something`
+
+In the main directory go to detection-utils:
+
+`cd detection-utils`
+
+And install with `pip install .`
+

@@ -1,3 +1,8 @@
+"""
+Module to provide universal API for both YOLO and TensorFlow models.
+
+Jakub Jach &copy; 2024
+"""
 import io
 import os
 import numpy as np
@@ -7,7 +12,6 @@ from ultralytics import YOLO
 from .yol.detect import detect
 from timeit import default_timer as timer
 from object_detection.utils import label_map_util
-
 
 
 class UniversalObjectDetector:
@@ -68,6 +72,7 @@ class UniversalObjectDetector:
             return self.__detect_tf(file, threshold)
         return self.__detection_yolo(file, threshold)
     
+    
     def raw_detection(self, file:str|bytes, **kwargs):
         """Raw detection of loaded model.
 
@@ -85,9 +90,6 @@ class UniversalObjectDetector:
                 raw_content = infile.read()
         if self.__modeltype == 'tf':
             image = tf.image.decode_image(raw_content, channels=3)
-            # image = tf.image.resize(image, (width,height))
-            # im_height, im_width, _ = image.shape
-            # Model expects tf.uint8 tensor, but image is read as tf.float32.
             input_tensor = np.expand_dims(image, 0)
             return self.__model(input_tensor, **kwargs)
         else:

@@ -1,3 +1,8 @@
+"""
+Module providing utilities for detections drawing.
+
+Jakub Jach &copy; 2024
+"""
 import os
 import cv2
 import ast
