@@ -164,7 +164,8 @@ cython_debug/
 
 # Other
 
-/models/
+/models/*
+!/models/models.7z
 /bricks/
 /workspace/data/
 /workspace/tfrecords/
