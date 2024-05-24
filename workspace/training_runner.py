@@ -83,7 +83,7 @@ def train_model(modelname, turn_off, evaluate):
     """Executes and controls training process. 
     Kills training if `nan` is found in total loss.
 
-    NOTE: This solution is designed to work in Windows environment.
+    NOTE: This solution is designed to work in both Windows and Linux environment (although Linux not tested yet).
 
     Arguments:
     modelname -- Name of the model (directory).
@@ -131,12 +131,18 @@ def train_model(modelname, turn_off, evaluate):
             if line.find("'Loss/total_loss': nan") != -1:
                 print("Killing broken learning process")
                 logfile.write("Killing broken learning process...\n".encode('utf-8'))
-                subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
+                if os.name == 'nt':
+                    subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
+                else:
+                    subprocess.Popen(f"kill -TERM {subproc.pid}")
                 training_killed = True
             elif line.find("RESOURCE_EXHAUSTED: Out of memory") != -1 or line.find("UnicodeDecodeError:") != -1 or line.find("RESOURCE_EXHAUSTED: failed to allocate memory") != -1:
                 training_failed = True
                 logfile.write("Killing learning process that produced error...\n".encode('utf-8'))
-                subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
+                if os.name == 'nt':
+                    subprocess.Popen(f"TASKKILL /F /PID {subproc.pid} /T")
+                else:
+                    subprocess.Popen(f"kill -KILL {subproc.pid}")
             
     errors.close()
     
@@ -170,7 +176,10 @@ def train_model(modelname, turn_off, evaluate):
         
         root.mainloop()
         if timer.get() == 0:
-            os.system("shutdown /s /t 1")
+            if os.name == 'nt':
+                os.system("shutdown /s /t 1")
+            else:
+                os.system("init 0")
 
         
 def is_model_empty(modelname):
