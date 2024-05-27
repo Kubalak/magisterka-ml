@@ -121,7 +121,7 @@ def create_detections_grid(modelpath:str, datafile:str):
     df["original_class"] = df["image"].apply(lambda z: z[:-9])
     df["class_is_best"] = df["best_class"] == df["original_class"]
     
-    with alive_bar(df['best_class'].count()) as bar:
+    with alive_bar(int(df['image'].count())) as bar:
         for a in range(10):
             f, ax = plt.subplots(5, 5, figsize=(15,15))
             for i in range(5):

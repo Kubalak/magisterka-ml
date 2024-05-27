@@ -20,7 +20,7 @@
 - Matplotlib
 - Shapely
 - Protobuf 3.20.3 (doesn't work with other versions)
-- CUDA capable GPU to speed up calculations
+- CUDA capable GPU to speed up calculations (with A LOT OF VRAM).
 
 ### Installation
 
@@ -48,4 +48,8 @@ In the main directory go to detection-utils:
 `cd detection-utils`
 
 And install with `pip install .`
+
+## IMPORTANT!
+
+`workspace` directory contains `nvvm` where libdevice is located. Please check hash file value by comparing it with the one written in `libdevice.json`.
 

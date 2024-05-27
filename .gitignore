@@ -188,7 +188,10 @@ cython_debug/
 *tmp_local*
 
 # NVVM local dir
-nvvm/
+/workspace/nvvm/bin/
+/workspace/nvvm/include/
+/workspace/nvvm/lib/
+/workspace/nvvm/libnvvm-samples/
 
 .idea/
 

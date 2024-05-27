@@ -16,20 +16,33 @@ from detection_utils.tensor.model_download_utils import download_archive, untar_
 
 SCRIPT_NAME = "model_main_tf2.py"
 
-process = None
-root = tk.Tk()
-
 
 def human_readable(size:int):
     index = 0
-    sizes = ['B', 'KB', 'MB', 'GB', 'TB']
+    sizes = ['B', 'KiB', 'MiB', 'GiB', 'TiB']
     while size//1024 > 1:
         size /= 1024
         index += 1
     return (size, sizes[index])
 
 
-def get_system_info():
+def get_system_info() -> str:
+    """### Returns formatted system information.
+    System info includes the following:
+    - OS
+    - Architecture
+    - CPU name
+    - Core count
+    - CPU frequency
+    - CPU usage (at the moment of measurement)
+    - RAM total
+    - RAM used
+    - RAM available
+    - GPU's list
+
+    Returns:
+        str: Formatted system information.
+    """
     uname = platform.uname()
     arch = platform.architecture()
     machine = platform.machine()
@@ -49,7 +62,7 @@ def get_system_info():
         if matched is not None:
             gpus.append(matched.group(0)[:-1].split(':'))
     
-    info =f'+{"System info".center(62, "-")}+\n'
+    info = f'+{"System info".center(62, "-")}+\n'
     info += "| Uname".ljust(17)+f"{uname.system} {uname.release}".ljust(46) + '|\n'
     info += "| Architecture".ljust(17) + arch[0].ljust(46) + '|\n'
     info += "| Machine".ljust(17) + machine.ljust(46) + '|\n'
@@ -60,24 +73,13 @@ def get_system_info():
     info += "| RAM total".ljust(17)+  f"{ram_total[0]:.2f} {ram_total[1]}".ljust(46)+  '|\n'
     info += "| RAM used".ljust(17)+  f"{ram_used[0]:.2f} {ram_used[1]}".ljust(46)+  '|\n'
     info += "| RAM available".ljust(17)+  f"{ram_avail[0]:.2f} {ram_avail[1]}".ljust(46)+  '|\n'
+    
     for gpu_id,  gpu_name in gpus:
         info += f'| {gpu_id}'.ljust(17) + f"{gpu_name.strip()}".ljust(46) + '|\n'
+        
     info += f'+{"End system info".center(62, "-")}+'
     return info
 
-def start_training(modelname, turn_off, evaluate):
-    """Starts a new process to run and control training. Closes main app window.
-    
-    Arguments:
-    modelname -- Name of the model (directory).
-    turn_off -- If set to `True` computer will turn off after training (if training has not been interrupted).
-    evaluate -- If set to `True` evaluaion script will be run after training see `eval_runner.py`.
-    """
-    global process
-    process = Process(target=train_model, args=(modelname,turn_off, evaluate))
-    process.start()
-    root.destroy()
-    
     
 def train_model(modelname, turn_off, evaluate):
     """Executes and controls training process. 
@@ -188,6 +190,7 @@ def is_model_empty(modelname):
 
 
 if __name__ == "__main__":
+    root = tk.Tk()
     root.title("Model training runner")
     root.geometry("400x400")
     
@@ -205,13 +208,15 @@ if __name__ == "__main__":
 
     eval_box =  ttk.Checkbutton(text="Uruchom ewaluację po zakończeniu uczenia", variable=evaluate, onvalue=1, offvalue=0)
     eval_box.place(x=20, y=100)
+    
+    def start_training(modelname, turn_off, evaluate):
+        root.destroy()
+        train_model(modelname, turn_off, evaluate)
 
     button = ttk.Button(text="Start", command=lambda: start_training(comobox.get(), shutdown.get(), evaluate.get()))
     button.place(x=140,y=140)
     
     root.mainloop()
     
-    if process is not None:
-        process.join()
     
     

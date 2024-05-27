@@ -1,9 +1,16 @@
-import subprocess
 import os, sys
+import subprocess
+
 
 SCRIPT_NAME = "model_main_tf2.py"
 
 def run_evaluation(modelname, time):
+    """Runs evaluation in subprocess and logs output to `workspace/logs/{modelname}_{time}-(stdout/stderr).log`
+
+    Args:
+        modelname (str): Name of the model folder in `workspace/models`.
+        time (str): Timestamp for log file name.
+    """
     errors = open(f"logs/{modelname}_{time}-stdout.log", "ab")
 
     subproc = subprocess.Popen(
