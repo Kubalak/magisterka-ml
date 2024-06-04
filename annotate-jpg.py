@@ -1,8 +1,9 @@
 import os
 import json
-import cv2 
+import cv2
 import time
 from alive_progress import alive_bar
+
 
 def prepare(filename):
     """Loads the filename and prepares True/False matrix representing pixels.
@@ -13,9 +14,10 @@ def prepare(filename):
     Returns:
         tuple(MatLike,list[list[bool]]): Two elements tuple with loaded image and `True`/`False` matrix.
     """
-    img = cv2.imread(filename,0)
-    height,width = img.shape
-    return (img, [[img.item(j,i) != 0 for j in range(height)] for i in range(width)])
+    img = cv2.imread(filename, 0)
+    height, width = img.shape
+    return (img, [[img.item(j, i) != 0 for j in range(height)] for i in range(width)])
+
 
 def get_bounds(pixels):
     """Creates a bounding box for passed matrix.
@@ -44,7 +46,7 @@ def get_bounds(pixels):
                 annotations["ymin"] = j
             elif pixels[i][j] and j > annotations["ymax"]:
                 annotations["ymax"] = j
-                
+
     if annotations["xmin"] > 0:
         annotations["xmin"] -= 1
     if annotations["xmax"] < width:
@@ -55,7 +57,8 @@ def get_bounds(pixels):
         annotations["ymax"] += 1
     return annotations
 
-def annotate(filename:str, class_name, class_id):
+
+def annotate(filename: str, class_name, class_id):
     """Annotates given filename.
 
     Args:
@@ -83,6 +86,7 @@ def annotate(filename:str, class_name, class_id):
         'class/label': class_id,
     })
 
+
 def mark(directories):
     """Creates annotation for directories and converts images to JPG.
 
@@ -94,22 +98,26 @@ def mark(directories):
     index = 0
     with alive_bar(len(directories)) as bar:
         for directory in directories:
-            files[directory] = [*filter(lambda z: z.endswith('.jpg'), os.listdir(os.path.join('bricks', directory)))]
+            files[directory] = [
+                *filter(lambda z: z.endswith('.jpg'), os.listdir(os.path.join('bricks', directory)))]
             # expr = re.compile("^\\d+")
             # class_id = int(expr.search(dirname).group(0))
-            index+=1
+            index += 1
             for file in files[directory]:
-                image, info = annotate(os.path.join('bricks', directory, file), directory, index)
-                cv2.imwrite(os.path.join('bricks-jpg', directory, info['filename']), image, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
+                image, info = annotate(os.path.join(
+                    'bricks', directory, file), directory, index)
+                cv2.imwrite(os.path.join('bricks-jpg', directory,
+                            info['filename']), image, [int(cv2.IMWRITE_JPEG_QUALITY), 100])
                 with open(os.path.join('bricks-jpg', directory, '.'.join([*file.split('.')[:-1], 'json'])), 'w') as file:
-                    json.dump(info,file,indent=2)
-            
+                    json.dump(info, file, indent=2)
+
             meta.append({'id': index, 'name': directory})
             bar()
-    
+
     with open("labels.pbtxt", "w") as file:
         for item in meta:
-            file.write(f"item {'{'}\n  id: {item['id']}\n  name: \'{item['name']}\'\n{'}'}\n")
+            file.write(
+                f"item {'{'}\n  id: {item['id']}\n  name: \'{item['name']}\'\n{'}'}\n")
     print()
 
 
@@ -119,6 +127,3 @@ if __name__ == "__main__":
     mark(directories)
     stop = time.time()
     print(f"Job took {stop-start}s to complete")
-    
-    
-    

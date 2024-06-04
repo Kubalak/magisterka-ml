@@ -3,6 +3,7 @@ import shutil
 import tarfile
 import requests
 
+
 def download_archive(url):
     response = requests.get(url, stream=True)
     if response.ok:
@@ -24,7 +25,8 @@ def untar_archive(path='model_tmp_local', pre_trained_dir="workspace/pre_trained
         print(model_dir)
         if not os.path.exists(os.path.join(models_dir, model_dir)):
             os.makedirs(os.path.join(models_dir, model_dir), exist_ok=True)
-            shutil.copy2(os.path.join(pre_trained_dir, model_dir, 'pipeline.config'), os.path.join(models_dir, model_dir, 'pipeline.config'))
+            shutil.copy2(os.path.join(pre_trained_dir, model_dir, 'pipeline.config'), os.path.join(
+                models_dir, model_dir, 'pipeline.config'))
         return True
     else:
         return False

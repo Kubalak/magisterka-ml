@@ -11,6 +11,7 @@ from datetime import datetime
 from tkinter import messagebox
 from multiprocessing import Process
 from eval_runner import run_evaluation
+# from object_detection.utils.config_util import get_configs_from_pipeline_file
 from detection_utils.tensor.model_download_utils import download_archive, untar_archive
 
 
@@ -81,17 +82,19 @@ def get_system_info() -> str:
     return info
 
     
-def train_model(modelname, turn_off, evaluate):
+def train_model(modelname:str, turn_off:bool, evaluate:bool):
     """Executes and controls training process. 
     Kills training if `nan` is found in total loss.
 
     NOTE: This solution is designed to work in both Windows and Linux environment (although Linux not tested yet).
 
     Arguments:
-    modelname -- Name of the model (directory).
-    turn_off -- If set to `True` computer will turn off after training (and evaluation if set).
-    evaluae -- If set to `True` evaluaion script will be run after training see `eval_runner.py`.
+    modelname (bool): Name of the model (directory).
+    turn_off (bool): If set to `True` computer will turn off after training (and evaluation if set).
+    evaluae (bool): If set to `True` evaluaion script will be run after training see `eval_runner.py`.
     """
+    # model_config = get_configs_from_pipeline_file(os.path.join("models", modelname, "pipeline.config"))
+    # model_config['train_config'].fine_tune_checkpoint
     if not os.path.exists(f"pre_trained_models/{modelname}/saved_model"):
         print("Pre trained model does not exist, downloading...")
         df = pd.read_csv("../models.csv")

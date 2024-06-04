@@ -116,7 +116,7 @@ def generate_bars(modelpath:str, df:pd.DataFrame=None, close=False):
 
 
 def create_detections_grid(modelpath:str, datafile:str):
-    df = pd.read_csv(os.path.join(modelpath, datafile))
+    df = pd.read_csv(os.path.join("workspace", "exported_models", modelpath, datafile))
     df["boxes"] = [*map(ast.literal_eval, df.boxes.to_list())]
     df["original_class"] = df["image"].apply(lambda z: z[:-9])
     df["class_is_best"] = df["best_class"] == df["original_class"]
@@ -129,14 +129,14 @@ def create_detections_grid(modelpath:str, datafile:str):
                     row = df.loc[a * 25 + i * 5 + j]
                     box_drawer(os.path.join("bricks", row["image"][:-9], row["image"]), row["image"][:-9], row["boxes"], ax[i, j])
                     bar()   
-            plt.savefig(os.path.join(modelpath,f"detections_{a}.png"), bbox_inches='tight', pad_inches=0)
+            plt.savefig(os.path.join("workspace", "exported_models", modelpath,f"detections_{a}.png"), bbox_inches='tight', pad_inches=0)
             plt.close(f)
 
 
 if __name__ == "__main__":
     parser = ArgumentParser()
     
-    parser.add_argument("modeldir", help="Model dir name eg. workspace/exported_models/ssd_resnet...")
+    parser.add_argument("modeldir", help="Model dir name eg. ssd_resnet...")
     parser.add_argument("--datafile", "-df", help="Data file name", type=str, default="validation_results.csv")
     namespace = parser.parse_args()
     

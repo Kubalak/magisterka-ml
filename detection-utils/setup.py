@@ -1,6 +1,7 @@
 from setuptools import setup, Extension, find_packages
 import os
 
+
 def main():
     setup(
         name="detection_utils",
@@ -27,6 +28,7 @@ def main():
         python_requires='>=3.9',
         include_package_data=True
     )
+
 
 if __name__ == "__main__":
     main()

@@ -7,6 +7,7 @@ from multiprocessing import Pool, cpu_count
 
 states = ['|', '/', '-', '\\']
 
+
 def to_tfrecord(filename):
     """Reads a `filename` and associated `*.json` file with annotations.
     Returns:
@@ -17,7 +18,7 @@ def to_tfrecord(filename):
     meta_filename = '.'.join([*filename.split('.')[:-1], 'json'])
     with open(meta_filename, 'r') as infile:
         obj = json.load(infile)
-    
+
     if obj['bbox']["xmin"] < 0:
         raise RuntimeError("xmin < 0")
     if obj['bbox']["xmax"] > obj["width"]:
@@ -42,22 +43,26 @@ def to_tfrecord(filename):
         'image/object/class/text': utils.bytes_list_feature([obj['class/text'].encode()]),
         'image/object/class/label': utils.int64_list_feature([obj['class/label']]),
     })))
-    
+
+
 def tf_from_dir(dirname):
     """Scans directory and converts all JPG files into `*.record` files."""
-    files = filter(lambda z: z.endswith('.jpg'), os.listdir(os.path.join('bricks', dirname)))
-    records = [*map(lambda z: to_tfrecord(os.path.join('bricks', dirname, z)), files)]
+    files = filter(lambda z: z.endswith('.jpg'),
+                   os.listdir(os.path.join('bricks', dirname)))
+    records = [
+        *map(lambda z: to_tfrecord(os.path.join('bricks', dirname, z)), files)]
     for id, record in records:
         with tf.io.TFRecordWriter(os.path.join("workspace", "tfrecords", f"{id}.record")) as writer:
             writer.write(record.SerializeToString())
-            
+
 
 if __name__ == "__main__":
     start = time.time()
-    directories = [*filter(lambda z: os.path.isdir(os.path.join("bricks", z)), os.listdir("bricks"))]
-    
+    directories = [
+        *filter(lambda z: os.path.isdir(os.path.join("bricks", z)), os.listdir("bricks"))]
+
     with Pool(cpu_count()) as pool:
         pool.map(tf_from_dir, directories)
-    
+
     stop = time.time()
     print(f"Job took {stop-start}s to complete")
