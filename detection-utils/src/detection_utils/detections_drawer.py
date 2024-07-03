@@ -4,6 +4,7 @@ Module providing utilities for detections drawing.
 Jakub Jach &copy; 2024
 """
 import os
+import numpy as np
 import cv2
 import ast
 import pandas as pd
@@ -25,10 +26,12 @@ def box_drawer(image:str|bytes, classname:str, boxes:List[int], ax:matplotlib.ax
         ax (matplotlib.axes.Axes): Axes on which to draw detections
     """
     if type(image) is bytes:
+        image = np.asarray(bytearray(image), dtype=np.uint8)
         image = cv2.imdecode(image, cv2.IMREAD_COLOR)
     else:
         image = cv2.imread(image)
     
+    image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     
     ax.set_xticks([])
     ax.set_yticks([])
@@ -41,9 +44,14 @@ def box_drawer(image:str|bytes, classname:str, boxes:List[int], ax:matplotlib.ax
             color = 'g' if classname == box[-2] else 'r'
             w = box[2] - box[0]
             h = box[3] - box[1]
-            rect = patches.Rectangle((box[0], box[1]), w,h, edgecolor=color, facecolor='none', linewidth=1)
-            ax.add_patch(rect)
-            ax.text(box[0], box[1] - 2, box[-2], verticalalignment='bottom', bbox=dict(facecolor=color, alpha=0.5, boxstyle="square,pad=0.2"), color='w')
+            if classname is None:
+                rect = patches.Rectangle((box[0], box[1]), w,h, edgecolor="fuchsia", facecolor='none', linewidth=1)
+                ax.add_patch(rect)
+                ax.text(box[0], box[1] - 2, box[-2], verticalalignment='bottom', bbox=dict(facecolor="fuchsia", alpha=0.5, boxstyle="square,pad=0.2"), color='w')
+            else:
+                rect = patches.Rectangle((box[0], box[1]), w,h, edgecolor=color, facecolor='none', linewidth=1)
+                ax.add_patch(rect)
+                ax.text(box[0], box[1] - 2, box[-2], verticalalignment='bottom', bbox=dict(facecolor=color, alpha=0.5, boxstyle="square,pad=0.2"), color='w')
 
 
 def draw_intersection(image:str|bytes, gtbox:List[int], pbox:List[int], ax:matplotlib.axes.Axes, det_iou:tuple=None):

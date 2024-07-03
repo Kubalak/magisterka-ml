@@ -59,7 +59,7 @@ class UniversalObjectDetector:
         self.__modeltype = modeltype
 
     def detect_objects(self, file: str | bytes, threshold=.5):
-        """Detects LEGO bricks on image passed in filename param
+        """Detects LEGO bricks on image passed in file param
 
         Args:
             file (str|bytes): Name of image file or its conent.
