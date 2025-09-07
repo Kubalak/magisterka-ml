@@ -131,7 +131,7 @@ tf-slim==1.1.0
 threadpoolctl==3.4.0
 toml==0.10.2
 tomli @ file:///C:/Windows/TEMP/abs_ac109f85-a7b3-4b4d-bcfd-52622eceddf0hy332ojo/croots/recipe/tomli_1657175513137/work
-torch==2.2.2
+torch==2.8.0
 torchaudio==2.2.2
 torchvision==0.17.2
 tornado @ file:///C:/b/abs_0cbrstidzg/croot/tornado_1696937003724/work
